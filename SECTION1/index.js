@@ -23,7 +23,7 @@
 // }
 
 // {
-//     let b = 10;
+//     var b = 10;
 // }
 // console.log(b);
 
@@ -31,9 +31,14 @@
 // x+=7
 // console.log(x);
 
-let x = 'Hello anh em';
+// let x = 'Hello anh em';
 // console.log(x.toLocaleUpperCase());
-let y = x.toUpperCase();
-console.log(y);
-let z = x.toLowerCase();
-console.log(z);
+// let y = x.toUpperCase();
+// console.log(y);
+// let z = x.toLowerCase();
+// console.log(z);
+
+const x = 10;
+console.log(x);
+x = 11;
+console.log(x); 
