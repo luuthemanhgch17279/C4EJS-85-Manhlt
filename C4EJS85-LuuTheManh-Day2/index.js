@@ -71,21 +71,21 @@
 // for(let i = c; i < n; i++){
 //     console.log(i);
 // }
-/////////////////////////////////////////////////////////////////////////// Lỗi //////////////////////////////////////////////
+
 // console.log("e. In ra các số từ c => n-1 (Stepping = 3), trong đó n, c được nhập từ bàn phím.");
-// let c = prompt("Enter c");
+// let c = Number(prompt("Enter c"));
 // let n = prompt("Enter n");
 // for(let i = c; i < n; i+=3){
 //     console.log(i);
 // }
 // console.log("f. In ra các số từ c => n-1 (Stepping = k), trong đó n, c, k được nhập từ user");
-// let n = prompt("Enter second number:");
-// let c = prompt("Enter first number: ");
-// let k = prompt("Enter stepping:")
+// let c = Number(prompt("Enter c"));
+// let n = prompt("Enter n ");
+// let k = Number(prompt("Enter k"));
 // for(let i = c; i < n; i+=k){
 //   console.log(i);
 // }
-/////////////////////////////////////////////////////////////////////////// Lỗi ///////////////////////////////////////////////////
+
 
 
 // console.log("Bài Tập 4: Tính tích từ 1 => n");
@@ -133,7 +133,51 @@
 //   alert( x + " is an odd number");
 // }
 
-console.log("Bài Tập 9:") //Để Error
+// console.log("Bài Tập 9: in L và H theo yêu cầu")
+// let low = "L";
+// let high = "H";
+// for(let i=1; i <= 3; i++){
+//  console.log(low);
+// }
+// for(let i = 1; i <= 3; i++){
+//   console.log(high);
+// }
+//////////////////////////////////////////////////////////////
+// let totalNumber = prompt("Enter your number");
+// let low = "L";
+// let high = "H";
+// let number = (totalNumber/2) - ((totalNumber%2)/2);
+// for(let i =1; i <= number; i++){
+//     console.log(low);
+// }
+// for(let i =1; i <= totalNumber - number; i++){
+//   console.log(high);
+// }
+////////////////////////////////////////////////////////
+// let firstNumber = 0;
+// let secondNumber = 1;
+// for(let i=1; i <= 8/2; i++){
+//  console.log(firstNumber);
+//  console.log(secondNumber);
+// }
+//////////////////////////////////////////////////////
+// let n = prompt("Enter your number:");
+// let firstNumber = 0;
+// let secondNumber = 1;
+
+// if (n %2 == 0){
+//   for(let i=1; i <= n/2; i++){
+//     console.log(firstNumber);
+//     console.log(secondNumber);
+//   }
+// }else{
+//   for(let i=1; i <= n/2; i++){
+//     console.log(firstNumber);
+//     console.log(secondNumber);
+//   }
+//   console.log(firstNumber);
+// }
+
 
 // console.log("Bài Tập 10: Write a script to calculate the BMI (Body Mass Index) of a person");
 // let massUser = prompt("Enter your weigh in kg:");
@@ -157,3 +201,16 @@ console.log("Bài Tập 9:") //Để Error
 //   alert("You are Obese");
 // }
 
+
+// console.log("Bài Tập Câu điều kiện If-Else");
+// let a = prompt("Enter a");
+// let b= prompt("Enter b");
+// let c = prompt("Enter c");
+// let delta = b*b - (4*a*c);
+// if(delta>0){
+//   console.log("Phương Trình Có 2 Nghiệm Phân Biệt");
+// }else if(delta<0){
+//   console.log("Phương Trình Vô Nghiệm");
+// }else{
+//   console.log("Phương Trình Có 1 Nghiệm Duy Nhất");
+// }
