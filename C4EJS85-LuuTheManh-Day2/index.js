@@ -3,12 +3,12 @@
 // console.log("Trong JavaScript var, const là từ khóa để khai báo một biến ");
 // console.log("////////////////////////////////////////////////////////////////");
 // console.log("Q2: Sự Khác nhau giữa let và var?");
-// console.log("let và var đều có tác dụng là để khai báo 1 biến, chỉ khác nhau ở phạm vi hoạt động.") 
+// console.log("let và var đều có tác dụng là để khai báo 1 biến, chỉ khác nhau ở phạm vi hoạt động.")
 // Ví dụ Q2:
 // ========================================
 // {
 //     let x = "Hello Mind X";
-// } 
+// }
 // console.log(x);
 // ========================================
 // {
@@ -19,18 +19,17 @@
 // console.log("Q3: Sự Khác nhau giữa let và const?");
 // console.log("let và var đều có tác dụng là để khai báo 1 biến, chỉ khác nhau ở điểm, khi sử dụng const để khai báo 1 biến thì giá trị của biến sẽ không thể thay đổi");
 //Ví dụ Q3:
- // ========================================
+// ========================================
 //  let x = 10;
 //  x = 5;
 //  console.log(x);
-  // ========================================
+// ========================================
 //   const y = 3.14;
 //   y = 3.15;
 //   console.log(y);
 // console.log("Q4: Trường hợp nào sử dụng vả, let , const");
 // console.log("1. Không dùng var trong mọi trường hợp mà thay bằng đùng let");
 // console.log("2. Sử dụng const để khai báo biến khi cần định nghĩa 1 hằng số");
-
 
 // console.log("Bài Tập 2: Boolean");
 // console.log("Q1: Boolean là gì?");
@@ -85,8 +84,6 @@
 // for(let i = c; i < n; i+=k){
 //   console.log(i);
 // }
-
-
 
 // console.log("Bài Tập 4: Tính tích từ 1 => n");
 // let n = prompt("Enter n:");
@@ -178,7 +175,6 @@
 //   console.log(firstNumber);
 // }
 
-
 // console.log("Bài Tập 10: Write a script to calculate the BMI (Body Mass Index) of a person");
 // let massUser = prompt("Enter your weigh in kg:");
 // let heightUser = prompt("Enter your height in cm:");
@@ -201,7 +197,6 @@
 //   alert("You are Obese");
 // }
 
-
 // console.log("Bài Tập Câu điều kiện If-Else");
 // let a = prompt("Enter a");
 // let b= prompt("Enter b");
@@ -214,3 +209,80 @@
 // }else{
 //   console.log("Phương Trình Có 1 Nghiệm Duy Nhất");
 // }
+
+// Vẽ Hình Vuông:
+// function drawSquare(){
+// for(let i=1; i <= 4; i++){
+// 	fd(100);
+//   	lt(90);
+// }
+// }
+// drawSquare();
+
+//Vẽ Hình Tam Giác:
+// clear();
+// lt(60);
+// function drawTriangle(){
+// 	for(let i = 1; i <=3; i++){
+//     	fd(150);
+//      lt(120);
+//     }
+// }
+// drawTriangle();
+
+// Vẽ Hình Ngũ Giác
+// clear();
+// function draw(){
+// for(let i = 1; i <= 5; i++){
+// 	fd(150);
+//   	rt(72);
+// }
+// }
+// draw();
+
+//Vẽ Hình Lục Giác
+// clear();
+// function draw(){
+// for(let i = 1; i <= 6; i++){
+// 	fd(150);
+//   	rt(60);
+// }
+// }
+// draw();
+
+//Bai 12
+// Ve hinh theo so canh user nhap
+// clear();
+// function draw(){
+// let x = prompt("Enter number of edge:")
+// for(let i = 1; i <= x; i++){
+// 	fd(150);
+//   	rt(360/x);
+// }
+// }
+// draw();
+
+// Vẽ Hình Tròn (Nhap 999)
+// clear();
+// function draw(){
+// let x = prompt("Enter number of edge:")
+// for(let i = 1; i <= x; i++){
+// 	fd(1);
+//   	rt(360/x);
+// }
+// }
+// draw();
+
+
+//Bài 13:
+// clear();
+// function draw() {
+//   let x = prompt("Enter number of polygons: ");
+//   for (let i = 1; i <= x; i++) {
+//     for (let j = 1; j <= i + 2; j++) {
+//       fd(100);
+//       rt(360 / (i + 2));
+//     }
+//   }
+// }
+// draw();
