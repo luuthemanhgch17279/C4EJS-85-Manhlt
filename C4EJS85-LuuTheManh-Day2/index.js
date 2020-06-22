@@ -46,11 +46,11 @@
 //     console.log("false");
 // }
 
-// console.log("Bài Tập 3:");
-// console.log("a. In ra 7 số, bắt đầu từ 0:");
-// for(let i = 0; i <= 7; i++){
-//     console.log(i);
-// }
+console.log("Bài Tập 3:");
+console.log("a. In ra 7 số, bắt đầu từ 0:");
+for(let i = 0; i < 7; i++){
+    console.log(i);
+}
 
 // console.log("b. In ra n số, bắt đầu từ 0, trong đó n được user nhập:");
 // let x = prompt("Enter your number:");
