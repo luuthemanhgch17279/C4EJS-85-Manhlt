@@ -46,11 +46,11 @@
 //     console.log("false");
 // }
 
-console.log("Bài Tập 3:");
-console.log("a. In ra 7 số, bắt đầu từ 0:");
-for(let i = 0; i < 7; i++){
-    console.log(i);
-}
+// console.log("Bài Tập 3:");
+// console.log("a. In ra 7 số, bắt đầu từ 0:");
+// for(let i = 0; i < 7; i++){
+//     console.log(i);
+// }
 
 // console.log("b. In ra n số, bắt đầu từ 0, trong đó n được user nhập:");
 // let x = prompt("Enter your number:");
@@ -78,8 +78,8 @@ for(let i = 0; i < 7; i++){
 //     console.log(i);
 // }
 // console.log("f. In ra các số từ c => n-1 (Stepping = k), trong đó n, c, k được nhập từ user");
-// let c = Number(prompt("Enter c"));
 // let n = prompt("Enter n ");
+// let c = Number(prompt("Enter c"));
 // let k = Number(prompt("Enter k"));
 // for(let i = c; i < n; i+=k){
 //   console.log(i);
