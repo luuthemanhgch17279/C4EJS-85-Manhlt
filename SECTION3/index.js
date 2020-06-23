@@ -52,20 +52,52 @@
 // }
 
 //Change all items of movies array into lowercase
-let moviesList = ['Batman', 'Up', 'Attack on titans', 'My boss my hero'];
-for(let i = 0; i < moviesList.length; i++){
-    moviesList[i] = moviesList[i].toLowerCase();
-}
-console.log(moviesList);
+// let moviesList = ['Batman', 'Up', 'Attack on titans', 'My boss my hero'];
+// for(let i = 0; i < moviesList.length; i++){
+//     moviesList[i] = moviesList[i].toLowerCase();
+// }
+// console.log(moviesList);
+
+// Bài Tập while:
+// while(true){
+//     let userName = prompt("Enter your username: ")
+//     if(userName.length >= 15){
+//         alert("Your user name is too long");
+//     }else{
+//         alert("Good username");
+//         break;
+//     }
+// }
+
+//Quick quiz
+// let spiderLegs = ["None", "4 legs", "8 legs", "12 legs"];
+// for(let i = 0; i < spiderLegs.length; i++){
+//     console.log(i + 1 + ": " + spiderLegs[i]);
+// }
+
+// while(true){
+//     let userChoice = Number(prompt("Enter your answer:")); 
+//     if(!userChoice  || userChoice > 4){
+//         alert("Invalide choice, the answer must be 1, 2, 3 or 4");
+//     }else{
+//         if(userChoice == 4){
+//             alert("Bravo, you are correct");
+//             break;
+//         }else if(0 < userChoice < 4){
+//             alert("Good luck next time");
+//             break;
+//         }
+//     }
+// }
 //Excercise array:
 
 
-let menu = ['Chao', 'Com', 'Burger'];
-console.log(menu);
+// let menu = ['Chao', 'Com', 'Burger'];
+// console.log(menu);
 
-for(let i = 0; i < menu.length; i++){
-    menu[i] = menu[i].toLocaleUpperCase();
-}
-console.log(menu);
+// for(let i = 0; i < menu.length; i++){
+//     menu[i] = menu[i].toLocaleUpperCase();
+// }
+// console.log(menu);
 
 
