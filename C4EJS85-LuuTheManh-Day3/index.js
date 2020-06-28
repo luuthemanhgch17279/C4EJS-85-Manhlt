@@ -27,19 +27,15 @@
 // console.log(a);
 
 //Bài Tập 3:
-// const a = [0, 9, 11, 99, 17, 04, 20, 01];
-// console.log(a);
-// console.log(...a);
+    // const a = [0, 9, 11, 99, 17, 04, 20, 01];
+    // console.log(a);
+    // console.log(...a);
 
 //Bài Tập 4:
 // let listItem = ["Jeans", "T-shirt", "Socks"];
 // let choiceSystem = ["c", "r", "u", "d"];
 // while (true) {
-//   let userChoice = String(
-//     prompt(
-//       "Hi there, welcome to shop admin panel!, what do you want (C, R, U, D)"
-//     )
-//   );
+//   let userChoice = prompt( "Hi there, welcome to shop admin panel!, what do you want (C, R, U, D)");
 //   if (userChoice == choiceSystem[1]) {
 //     console.log("The current item are: ");
 //     for (let i = 0; i < listItem.length; i++) {
@@ -65,7 +61,7 @@
 //   } else {
 //     alert("This command is not supported");
 //   }
-// }
+//}
 
 //Bài Tập 5
 // let sequenceNumber = prompt("Enter a sequence of Numbers, separated by commas");
