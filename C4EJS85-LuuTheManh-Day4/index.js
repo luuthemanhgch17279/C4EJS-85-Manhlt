@@ -799,7 +799,7 @@
 // console.log(
 //   "3.3. the job’s title, locations, salary, benefits, skills and requirements"
 // );
-//làm giống bài 1 thay từ khóa in bằng of cho array
+// //làm giống bài 1 thay từ khóa in bằng of cho array
 // for(let hit of ex3.hits) {
 //     console.log("Job's title: " + hit.jobTitle);
 //     console.log("Location: " + hit.locations);
@@ -810,18 +810,18 @@
 //     console.log("===============")
 // }
 
-console.log("Baì Tập 4: ");
-let dictionary = {
-  debug:
-    "The process of figuring out why your program has a certain error and how to fix it",
-  done:
-    "When your task is complete, the only thing you have to do is to wait for  users to use it (no additional codes or actions needed)",
-  defect: "The formal word for ‘error’",
-  pm:
-    "The short version of Project Manager, the person in charge of the final result of a project",
-  uiux:
-    "UI means User Interface, UX mean User Experience, are the process  to define how your products looks and feels",
-};
+// console.log("Baì Tập 4: ");
+// let dictionary = {
+//   debug:
+//     "The process of figuring out why your program has a certain error and how to fix it",
+//   done:
+//     "When your task is complete, the only thing you have to do is to wait for  users to use it (no additional codes or actions needed)",
+//   defect: "The formal word for ‘error’",
+//   pm:
+//     "The short version of Project Manager, the person in charge of the final result of a project",
+//   uiux:
+//     "UI means User Interface, UX mean User Experience, are the process  to define how your products looks and feels",
+// };
 // console.log("4.1.====================================");
 // alert("Hi there, this is dev dictionary");
 // let userKey = prompt("Enter a keyword");
@@ -854,44 +854,44 @@ let dictionary = {
 //   }
 // }
 
-console.log("Bài tập 5:=====================");
-let products = [
-  {
-    name: "Xiaomi portable charger 20000mah",
-    brand: "Xiaomi",
-    price: 428,
-    category: "Charger",
-    color: "White",
-  },
-  {
-    name: "VSmart Active 1",
-    brand: "VSmart",
-    price: 5487,
-    category: "Phone",
-    color: "Black",
-  },
-  {
-    name: "IPhone X",
-    brand: "Apple",
-    price: 21490,
-    category: "Phone",
-    color: "Gray",
-  },
-  {
-    name: "Samsung Galaxy A9",
-    brand: "Samsung",
-    price: 8490,
-    category: "Phone",
-    color: "Blue",
-  },
-];
+// console.log("Bài tập 5:=====================");
+// let products = [
+//   {
+//     name: "Xiaomi portable charger 20000mah",
+//     brand: "Xiaomi",
+//     price: 428,
+//     category: "Charger",
+//     color: "White",
+//   },
+//   {
+//     name: "VSmart Active 1",
+//     brand: "VSmart",
+//     price: 5487,
+//     category: "Phone",
+//     color: "Black",
+//   },
+//   {
+//     name: "IPhone X",
+//     brand: "Apple",
+//     price: 21490,
+//     category: "Phone",
+//     color: "Gray",
+//   },
+//   {
+//     name: "Samsung Galaxy A9",
+//     brand: "Samsung",
+//     price: 8490,
+//     category: "Phone",
+//     color: "Blue",
+//   },
+// ];
 
 // console.log("5.1.===== in các sản phẩm trong list")
 // for(let productValue of products) {
 //     console.log("Name: " + productValue.name);
 //     console.log("Price: " + productValue.price);
 //     console.log("-----------------------------------")
-//}
+// }
 
 // console.log("5.2. ======= In sản phẩm theo index nhập");
 // let positionProduct = Number(prompt("Enter product position"));
@@ -916,11 +916,11 @@ let products = [
 //     }
 // }
 
-console.log("5.4. ======= Thêm provider vào các sản phẩm");
-products[0].providers = ["Phukienzero", "Dientuccc"];
-products[1].providers = ["Tgdd", "Ddghn", "VhStore"];
-products[2].providers = ["Tgdd"];
-products[3].providers = ["Tgdd"];
+//console.log("5.4. ======= Thêm provider vào các sản phẩm");
+// products[0].providers = ["Phukienzero", "Dientuccc"];
+// products[1].providers = ["Tgdd", "Ddghn", "VhStore"];
+// products[2].providers = ["Tgdd"];
+// products[3].providers = ["Tgdd"];
 // for(let productValue of products) {
 //     console.log("Name: " + productValue.name);
 //     console.log("Price: " + productValue.price);
@@ -928,14 +928,74 @@ products[3].providers = ["Tgdd"];
 //     console.log("-----------------------------------")
 // }
 
-console.log(products);
-//Error===================================
-console.log("5.5. ====== tìm kiếm sản phẩm dựa trên provider");
-let provider = prompt("Enter your provider you want find");
+// console.log(products);
+// //Error===================================
+// console.log("5.5. ====== tìm kiếm sản phẩm dựa trên provider");
+// let inputProvider = prompt("Enter your provider you want find");
 
-for (let productValue of products) {
-    if(productValue.providers == provider) {
-        console.log(productValue);
-    }
-}
+// for (let product of products) {
+//   for (let provider of product.providers) {
+//     if (provider == inputProvider) {
+//         console.log(product);
+//     }
+//   }
+// }
 //Error===================================
+
+console.log("Bài Tập 6 - 6.1");
+console.log(
+  "Hi there,  This is your learning  task to font-end developer career"
+);
+
+let task = [];
+let html = {
+  name: "HTML",
+  complete: false,
+};
+let css = {
+  name: "CSS",
+  complete: false,
+};
+let js = {
+  name: "Basic of JavaScript",
+  complete: false,
+};
+let git = {
+  name: "Git",
+  complete: false,
+};
+task.push(html);
+task.push(css);
+task.push(js);
+task.push(git);
+
+for (let i = 0; i < task.length; i++) {
+  console.log(i + 1 + ". " + task[i].name);
+  console.log("Complete: " + task[i].complete);
+}
+
+console.log("6.2. Create");
+let userCommand = prompt("Enter your command ( New, Delete, Update, Complete");
+
+if (userCommand == "new") {
+  let newValue = prompt("Enter new task");
+  newValue = {
+    name: newValue,
+    complete: false,
+  };
+  task.push(newValue);
+  console.log(task);
+} else if (userCommand == "update") {
+  let updateValue = Number(prompt("Enter position: "));
+  let newTitles = prompt("Enter new title");
+  task[updateValue].name = newTitles;
+  console.log(task);
+}else if (userCommand == "complete") {
+  let updateValue = Number(prompt("Enter position: "));
+  task[updateValue].complete = true;
+  console.log(task);
+}else if (userCommand == "delete") {
+  let deleteValue = Number(prompt("Enter position: "));
+  task.splice(deleteValue, 1);
+  console.log(task);
+}
