@@ -969,33 +969,47 @@ task.push(css);
 task.push(js);
 task.push(git);
 
-for (let i = 0; i < task.length; i++) {
-  console.log(i + 1 + ". " + task[i].name);
-  console.log("Complete: " + task[i].complete);
-}
+// for (let i = 0; i < task.length; i++) {
+//   console.log(i + 1 + ". " + task[i].name);
+//   console.log("Complete: " + task[i].complete);
+// }
 
-console.log("6.2. Create");
-let userCommand = prompt("Enter your command ( New, Delete, Update, Complete");
+// console.log("6.2. Create, , 6.2, 6.3, 6.4, 6.5");
+// let userCommand = prompt("Enter your command ( New, Delete, Update, Complete");
 
-if (userCommand == "new") {
-  let newValue = prompt("Enter new task");
-  newValue = {
-    name: newValue,
-    complete: false,
-  };
-  task.push(newValue);
-  console.log(task);
-} else if (userCommand == "update") {
-  let updateValue = Number(prompt("Enter position: "));
-  let newTitles = prompt("Enter new title");
-  task[updateValue].name = newTitles;
-  console.log(task);
-}else if (userCommand == "complete") {
-  let updateValue = Number(prompt("Enter position: "));
-  task[updateValue].complete = true;
-  console.log(task);
-}else if (userCommand == "delete") {
-  let deleteValue = Number(prompt("Enter position: "));
-  task.splice(deleteValue, 1);
-  console.log(task);
-}
+// if (userCommand == "new") {
+//   let newValue = prompt("Enter new task");
+//   newValue = {
+//     name: newValue,
+//     complete: false,
+//   };
+//   task.push(newValue);
+//   console.log(task);
+// } else if (userCommand == "update") {
+//   let updateValue = Number(prompt("Enter position: "));
+//   let newTitles = prompt("Enter new title");
+//   task[updateValue].name = newTitles;
+//   console.log(task);
+// }else if (userCommand == "complete") {
+//   let updateValue = Number(prompt("Enter position: "));
+//   task[updateValue].complete = true;
+//   console.log(task);
+// }else if (userCommand == "delete") {
+//   let deleteValue = Number(prompt("Enter position: "));
+//   task.splice(deleteValue, 1);
+//   console.log(task);
+// }
+
+// console.log("Bài 6.6");
+// for (let i = 0; i < task.length; i++) {
+//   console.log("[ ] " + i + 1 + ". " + task[i].name);
+// }
+// console.log("==================");
+// task[2].complete = true;
+// for (let i = 0; i < task.length; i++) {
+//   if (task[i].complete == true) {
+//     console.log("[X] " + i + 1 + ". " + task[i].name);
+//   }else{
+//     console.log("[ ] " + i + 1 + ". " + task[i].name);
+//   }
+// }
