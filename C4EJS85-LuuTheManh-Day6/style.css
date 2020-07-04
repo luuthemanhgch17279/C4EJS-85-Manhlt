@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Slab', serif;
+}
+
+body {
+    background: #636e72;
+    font-size:  14px;
+    line-height: 22px;
+    color: #dfe6e9;
+}
+.bold{
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.semi-bold{
+    font-weight:500;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.cv-container {
+    width: 800px;
+    height: auto;
+    display: flex;
+    margin: 50px auto;
+}
+.cv-container .cv-left {
+    width: 280px;
+    background: #0984e3;
+}
+.cv-container .cv-left .cv-profile{
+    width: 100%;
+    height: 280px;
+}
+.cv-container .cv-left .cv-profile img{
+    width: 100%;
+    height: 100%;
+}
+.cv-container .cv-left .cv-content{
+    padding: 0 25px;
+}
+.cv-container .title {
+    margin-bottom: 20px;
+}
+.cv-container .cv-item {
+    padding: 25px 0;
+    border-bottom: 2px solid;
+}
+.cv-container .cv-left .cv-item:last-child {
+    border-bottom: 0px;
+}
+.cv-container .cv-left ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.cv-container .cv-left ul li:last-child {
+    margin-bottom:0px;
+}
+.cv-container .cv-left ul li .icon {
+    width: 40px;
+    height: 25px;
+    font-size: 16px;
+}
+.cv-container .cv-right {
+    width: 520px;
+    background: #fff;
+    padding: 25px;
+    color: #718093;
+}
+.cv-container .cv-right .bold {
+    color: #0097e6;
+}
+.cv-container .cv-right .work ul, .cv-container .cv-right .education ul {
+    padding-left: 40px;
+    list-style: none;
+}
+
+.cv-container .cv-right ul li {
+    position: relative;
+}
+.cv-container .cv-right ul li .date{
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #353b48
+}
+.cv-container .cv-right ul li .info {
+    margin-bottom: 20px;
+}
+.cv-container .cv-right .hobby ul{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+.cv-container .cv-right .hobby ul li {
+    width: 80px;
+    height: 80px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: solid 2px #0097e6;
+    border-radius: 50%;
+    position: relative;
+    color: #0097e6;
+}
+.cv-container .cv-right .hobby ul li i {
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}

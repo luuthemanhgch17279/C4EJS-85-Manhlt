@@ -1,0 +1,145 @@
+/* p {
+   color: red; 
+}
+
+#bg-color {
+    background-color:#00FF00;
+}
+
+.font-size {
+    font-size: 24px;
+} */
+
+/* div, p{
+    font-size: 3em;
+    background: wheat
+  } */
+/* 
+  #div2 h1 {
+    color: blue;
+  } */
+
+/* [target] {
+    color: yellow;
+} */
+
+/* ul li {
+    font-weight: bold;
+} */
+/* .item > span {
+    font-size: 18px;
+}
+.item > div{
+    font-style: italic;
+} */
+
+/* div{
+    background-color: wheat;
+    /* Insert code below */
+/*color: green;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: bold;
+  } */
+
+/* a{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background:wheat;
+    /* Insert code below */
+/*  text-decoration: none;
+    color: green;
+    text-align: center;
+    height: 100px;
+    line-height: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+  } */
+
+/* div {
+    height: 135px;
+    width: 500px;
+    background-image: url(https://p7.hiclipart.com/preview/543/934/536/google-logo-g-suite-google.jpg);
+    background-size: 75px 75px;
+    /* background-repeat: repeat-y; */
+/* background-repeat: no-repeat;
+  } */
+/* 
+  div {
+    height: 300px;
+    width: 800px;
+    background-image: url(https://pbs.twimg.com/profile_images/988272404915875840/lE7ZkrO-_400x400.jpg);
+    background-repeat: no-repeat;
+  }
+  .bg1 {
+    background-size: contain;
+  }
+  .bg2 {
+    background-size: cover;
+  } */
+
+/* div{
+    width: 200px;
+    height:200px;
+    background:wheat;
+    font-size:30px;
+    text-align:center;
+    line-height:200px;
+
+    border: solid blue 3px; 
+    border-radius: 20px;
+  } */
+
+/* span{
+    background: red;
+  }
+  div{
+    background: blue;
+    display: inline-block;
+  } */
+/* 
+  div{
+    background: red;
+    display: inline;
+  } */
+
+/* #span1{
+    background: red;
+  }
+  #span2{
+    background:yellow;
+    width: 500px;
+    display: block;
+  } */
+
+/* div{
+      background: wheat;
+      width:400px;
+      border: 2px solid green;
+
+      padding-left: 40px;
+      padding-right: 40px;
+      padding: 45px;
+    } */
+
+/* #a >div {
+      background:wheat;
+
+       margin-left: 40px;
+       margin-right: 40px;
+       margin: 50px;
+    }
+    #a{
+
+      border:1px solid black
+    } */
+
+/* div{
+      width : 200px;
+      height : 200px;
+      font-size:2em;
+      background:wheat;
+      padding-left:200px;
+      box-sizing: border-box;
+    } */

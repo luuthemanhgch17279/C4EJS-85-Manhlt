@@ -1,0 +1,50 @@
+html {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+h1 {
+  color: blue;
+}
+p {
+  background-color: rebeccapurple;
+}
+#first_h1 {
+  text-decoration: underline;
+}
+.italic {
+  font-style: italic;
+}
+.white {
+    color: white;
+}
+[href] {
+    font-size: 60px;
+}
+[type="password"] {
+    border: solid gray 2px;
+}
+nav a {
+    text-decoration: line-through;
+}
+nav > a {
+    font-weight: bold;
+}
+button:active {
+    background-color: aquamarine;
+}
+input:focus {
+    border: black solid 5px;
+}
+img{
+    width: 400px;
+    height: auto;
+}
+img:hover {
+    border: gray solid 1px;
+}
+
+#banner {
+    background-image: url(https://avatar-nct.nixcdn.com/playlist/2019/07/29/0/a/d/1/1564411909601_500.jpg);
+    height: 25rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
