@@ -15,7 +15,7 @@
 // for(let i = 0; i<3; i++) {
 //     container.insertAdjacentHTML('afterEnd', `<li>${i}</li>`);
 // }
-// console.log('1-b, 2-a, 3-c, 4-d')
+// console.log('1-d, 2-a, 3-c, 4-b')
 
 //Bài 2
 // function sayHi(){
