@@ -151,7 +151,9 @@ for (let i = 0; i < items.length; i++) {
 }
 let itemLi = document.getElementsByTagName('li');
 itemLi[0].remove();
-// Lỗi chưa xóa được test item
+itemLi[0].remove();
+itemLi[0].remove();
+
 
 
 
