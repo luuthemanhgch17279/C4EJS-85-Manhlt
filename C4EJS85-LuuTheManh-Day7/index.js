@@ -76,7 +76,7 @@
 // btn2.addEventListener("click", (e) => {
 //   console.log(e.target);
 // });
-//console.log('e.target để đọc đọc button được click')
+// console.log('e.target để đọc đọc button được click')
 
 //Bài 7 - 7.2
 // document.getElementById('input').addEventListener('keydown', (e) => {
@@ -115,7 +115,7 @@
 //   console.log(btnClick.target);
 // })
 //Bài 11.4
-//let nameInput = document.getElementById("userName");
+// let nameInput = document.getElementById("userName");
 // console.log(nameInput);
 //Bài 11.5
 // upperBtn.addEventListener("click", () => {
