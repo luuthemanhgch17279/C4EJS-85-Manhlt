@@ -111,26 +111,28 @@ const loginForm = document.getElementById("LoginForm");
 const userName = document.getElementById("userName")
 const pass = document.getElementById("pass")
 const btnSubmit = document.getElementById("btnSubmit");
+const detaiForm = document.getElementById("detail_form");
 
 
 loginForm.style.display = "none"
+detaiForm.style.display = "none"
 btnLogin.addEventListener("click", function () {
     loginForm.style.display = "block";
     userForm.style.display = "none";
     btnLogin.style.display = "none";
+    cartForm.style.display = "none";
 });
 btnSubmit.addEventListener("click", function () {
     for (let i = 0; i < accountData.length; i++) {
         if (userName.value == accountData[i].userName && pass.value == accountData[i].password) {
-            // adminForm.style.display = "block";
-            // loginForm.style.display = "none";
             if (accountData[i].role == "admin") {
                 adminForm.style.display = "block";
-                loginForm.style.display = "none";
-            }else if(accountData[i].role =="client"){
+                loginForm.style.display = "none";   
+            } else if (accountData[i].role == "client") {
                 loginForm.style.display = "none";
                 alert("Welcome to " + accountData[i].userName);
                 userForm.style.display = "block";
+                cartForm.style.display = "block";
             }
         }
     }
@@ -258,11 +260,13 @@ clear_btn.addEventListener('click', () => {
 
 const userForm = document.getElementById("user_form")
 userForm.style.display = "block"
+const cartForm = document.getElementById("cart_form")
 
-//đoạn này là tạo localStorage, đưa toàn bộ Product Data vào.
+//Tạo localStorage, đưa toàn bộ Product Data vào.
 const storageProductData = 'productData';
 localStorage.setItem(storageProductData, JSON.stringify(productData));
 const productDataString = localStorage.getItem(storageProductData);
+
 //đoạn điều kiện check xem data sản phẩm ban đầu có chứa thông tin hay chưa
 if (productDataString) {
     productData = JSON.parse(productDataString);
@@ -270,11 +274,11 @@ if (productDataString) {
     productData = [];
 }
 const listProduct = document.getElementById('listProduct');
+
 // function này đọc dữ liệu từ array data ra và show ra html (màn hình)
-//style="background-color: darkgrey; height: 150px; width: 150px;" 
 function loadListProduct() {
     for (let i = 0; i < productData.length; i++) {
-        listProduct.insertAdjacentHTML('beforeend', `<li>
+        listProduct.insertAdjacentHTML('beforeend', `<li style="background-color: darkgrey; height: 150px;width: 150px;" >
         <div class="product-show" >
             <a class="reletive" href="" onclick="">
                 <img src="" alt="">
@@ -283,13 +287,15 @@ function loadListProduct() {
             </a>
         </div>
         <div class="info-box">
-        <button class="btn btn-success" class="btnAddCart" onclick="">Add to Cart</button>
-        <button class="btn btn-danger" class="btnDetail">Detail</button>
+        <a href="Main.html" ></a>
+        <button class="btnAddCart" onclick="">Add to Cart</button>
+        <button class="btnDetail" onclick="">Detail</button>
         </div>
     </li>` )
     };
-    const btnBuy = document.getElementsByClassName('btnBuy');
+    const btnDetail = document.getElementsByClassName('btnDetail');
     const btnAddCart = document.getElementsByClassName('btnAddCart');
+
 
     for (let i = 0; i < btnAddCart.length; i++) {
         btnAddCart[i].addEventListener('click', () => {
@@ -297,7 +303,28 @@ function loadListProduct() {
             cartTotal(productData[i]);
         })
     }
+    for (let i = 0; i < productData.length; i++) {
+        btnDetail[i].addEventListener('click', () => {
+            userForm.style.display = "none";
+            cartForm.style.display = "none";
+            detaiForm.style.display = "block";
+
+            const pDetail = document.getElementById("productDetail")
+
+            pDetail.insertAdjacentHTML('beforeend',
+                `<tr>
+                <td>${productData[i].productID}</td>
+                <td>${productData[i].productName}</td>
+                <td>${productData[i].productBrand}</td>
+                <td>${productData[i].price}</td>
+                <td>${productData[i].quantity}</td>
+                <td>${productData[i].description}</td>
+                <td>${productData[i].provider}</td>
+                </tr>`);
+        });
+    }
 };
+
 //function này hiển thị số product đã đc chọn có sẵn trong localstr, reload trang nhưg số sản phẩm trong cart k bị mất
 function loadNumberInCart() {
     let productNumberInCarts = localStorage.getItem('CartNumbers');
@@ -353,4 +380,3 @@ function cartTotal(chosenProduct) {
 }
 loadListProduct();
 loadNumberInCart();
-
