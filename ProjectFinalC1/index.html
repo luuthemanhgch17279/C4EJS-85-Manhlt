@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/ProjectFinalC1/media/style/style.css">
+    <script src="https://kit.fontawesome.com/d22d9dd2e6.js" crossorigin="anonymous"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <!-- jQuery library -->
@@ -12,78 +14,106 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <title>Document</title>
+    <title>Home</title>
 </head>
 
 <body>
-    <button id="btn_login" class="btn btn-success">Log in</button>
-    <div id="LoginForm">
-        <div class="form-group">
-          <label for="username">Username:</label>
-          <input class="form-control" id="userName" placeholder="Enter username">
-        </div>
-        <div class="form-group">
-          <label for="pwd">Password:</label>
-          <input type="password" class="form-control" id="pass" placeholder="Enter password" name="pswd">
-        </div>
-        <button type="submit" id="btnSubmit" class="btn btn-primary">Submit</button>
-    </div>
-    <br><br>
+    <div class="body_container">
+        <button id="btn_login">Log in</button>
 
-
-    <div id="admin_form">
-        <h2>Add New Product</h2>
-        <input type="text" placeholder="Enter productID" id="newID">
-        <input type="text" placeholder="Enter productName" id="newName">
-        <input type="text" placeholder="Enter productBrand" id="newBrand">
-        <input type="text" placeholder="Enter price" id="newPrice">
-        <input type="text" placeholder="Enter quantity" id="newQuantity">
-        <input type="text" placeholder="Enter description" id="newDescription">
-        <input type="text" placeholder="Enter provider" id="newProvider">
-        <button id="add_btn">Add</button>
-        <button id="clear_btn">Clear</button>
-        <h2>List of product</h2>
-        <table id="table" class="table table-dark">
-            <thead>
-            <tr>
-                <th>Product ID</th>
-                <th>Product Name</th>
-                <th>Product Brand</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Description</th>
-                <th>Provider</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody id="ts_tbody">
-            <!-- js Code -->
-        </tbody>
-        </table>
-    </div>
-
-    <div id="cart_form">
-        <a href="cart.html">
-            <div id="cart-show">
-                <p>Cart</p>
-                <span id="cartNumbers">0</span>
+        <div id="login_form">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="userName" placeholder="Enter username">
             </div>
-        </a>
-    </div>
-    <div id="user_form">
-        <h2>Product List </h2>
-        <div class="content">
-            <ul id="listProduct">
-                <!-- js Code -->
-            </ul>
-        </div>  
-    </div>
+            <div>
+                <label for="pwd">Password:</label>
+                <input type="password" id="pwd" placeholder="Enter password">
+            </div>
+            <button type="submit" id="btnSubmit">Submit</button>
+        </div>
 
-    <div id="detail_form">
-        <div id="productDetail"></div>
-    </div>
+        
+        <button id="btn_logout">Log out</button>
 
+        <div id="admin_form">
+            <h2>Add New Product</h2><br>
+            <div class="add_product">
+            <div class="icon">
+                <i class="fas fa-qrcode"></i>
+                <input type="text" placeholder="Enter Product ID" id="newID">
+            </div>
+            <div class="icon">
+                <i class="fas fa-tags"></i>
+                <input type="text" placeholder="Enter Product Name" id="newName">
+            </div>
+            <div class="icon">
+                <i class="fas fa-tablet-alt"></i>
+                <input type="text" placeholder="Enter Product Brand" id="newBrand">
+            </div>
+            <div class="icon">
+                <i class="fas fa-dollar-sign"></i>
+                <input type="text" placeholder="Enter Price" id="newPrice">
+            </div>
+            <div class="icon">
+                <i class="fas fa-sort-numeric-up-alt"></i>
+                <input type="text" placeholder="Enter Quantity" id="newQuantity">
+            </div>
+            <div class="icon">
+                <i class="fas fa-file-alt"></i>
+                <input type="text" placeholder="Enter Description" id="newDescription">
+            </div>
+            <div class="icon">
+                <i class="fas fa-people-arrows"></i>
+                <input type="text" placeholder="Enter Provider" id="newProvider">
+            </div>
+            
+            <button class="btn btn-outline-success" id="add_btn">Add New Product</button>
+            <button class="btn btn-outline-danger" id="clear_btn">Clear Info</button>
+            </div><br>
+            <h2>List of product</h2><br>
+            <table id="table" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Product Brand</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Description</th>
+                        <th>Provider</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="ts_tbody">
+                    <!-- js Code -->
+                </tbody>
+            </table>
+        </div>
+
+        <div id="cart_form">
+            <a href="cart.html">
+                <div id="cart-show">
+                    <p>Cart</p>
+                    <span id="cartNumbers">0</span>
+                </div>
+            </a>
+        </div>
+
+        <div id="user_form">
+            <h2>Product List </h2>
+            <div class="content">
+                <ul id="listProduct">
+                    <!-- js Code -->
+                </ul>
+            </div>
+        </div>
+
+        <div id="detail_form">
+            <div id="productDetail"></div>
+        </div>
+    </div>
 </body>
-<script src="index.js"></script>
+<script src="/ProjectFinalC1/media/js/index.js"></script>
 
 </html>

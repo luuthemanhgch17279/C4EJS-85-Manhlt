@@ -106,16 +106,31 @@ const accountData = [
     }
 ]
 
-const btnLogin = document.getElementById("btn_login");
-const loginForm = document.getElementById("LoginForm");
-const userName = document.getElementById("userName")
-const pass = document.getElementById("pass")
-const btnSubmit = document.getElementById("btnSubmit");
+const loginForm = document.getElementById("login_form");
+const adminForm = document.getElementById('admin_form')
 const detaiForm = document.getElementById("detail_form");
 
+const btnLogin = document.getElementById("btn_login");
+const btnSubmit = document.getElementById("btnSubmit");
+const btnLogout = document.getElementById("btn_logout");
 
-loginForm.style.display = "none"
-detaiForm.style.display = "none"
+const userName = document.getElementById("userName");
+const password = document.getElementById("pwd");
+
+const userForm = document.getElementById("user_form");
+const cartForm = document.getElementById("cart_form");
+
+// style display
+loginForm.style.display = "none";
+detaiForm.style.display = "none";
+adminForm.style.display = "none";
+userForm.style.display = "block";
+btnLogout.style.display = "none";
+cartForm.style.display = "block";
+
+
+
+// ============= Login =====================
 btnLogin.addEventListener("click", function () {
     loginForm.style.display = "block";
     userForm.style.display = "none";
@@ -124,22 +139,30 @@ btnLogin.addEventListener("click", function () {
 });
 btnSubmit.addEventListener("click", function () {
     for (let i = 0; i < accountData.length; i++) {
-        if (userName.value == accountData[i].userName && pass.value == accountData[i].password) {
+        if (userName.value == accountData[i].userName && password.value == accountData[i].password) {
             if (accountData[i].role == "admin") {
                 adminForm.style.display = "block";
                 loginForm.style.display = "none";   
+                btnLogout.style.display = "block";
             } else if (accountData[i].role == "client") {
                 loginForm.style.display = "none";
                 alert("Welcome to " + accountData[i].userName);
                 userForm.style.display = "block";
                 cartForm.style.display = "block";
+                btnLogout.style.display = "block";
             }
         }
     }
 });
+// ============= Login =====================
+btnLogout.addEventListener("click", function(){
+    adminForm.style.display = "none";
+    userForm.style.display = "block";
+    btnLogout.style.display = "none";
+    btnLogin.style.display = "block";
+    cartForm.style.display = "block";
+});
 
-const adminForm = document.getElementById('admin_form')
-adminForm.style.display = "none";
 // add new product
 const newID = document.getElementById('newID');
 const newName = document.getElementById('newName');
@@ -168,8 +191,8 @@ function update_table() {
         <td>${data.description}</td>
         <td>${data.provider}</td>
         <td>
-        <button class = "remove_btn">Delete</button>
-        <button class = "update_btn">Update</button>
+        <button class="remove_btn btn btn-danger">Delete</button>
+        <button class="update_btn btn btn-info">Update</button>
         </td>
         </tr>`);
     };
@@ -258,9 +281,7 @@ clear_btn.addEventListener('click', () => {
 });
 
 
-const userForm = document.getElementById("user_form")
-userForm.style.display = "block"
-const cartForm = document.getElementById("cart_form")
+
 
 //Tạo localStorage, đưa toàn bộ Product Data vào.
 const storageProductData = 'productData';
