@@ -35,7 +35,6 @@ header{
 .main_container{
     max-width: 1000px;
     height: auto;
-    display: flex;
     margin: 10px auto;
 }
 
@@ -83,4 +82,5 @@ header{
 .table, .table-bordered{
     text-align: center;
 }
+
 
