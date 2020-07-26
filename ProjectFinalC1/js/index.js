@@ -677,3 +677,53 @@ function loadList() {
 }
 
 loadList();
+
+const filterBrand = document.getElementById('filterBrand');
+const listBrand = document.getElementById('listBrand');
+
+let brand = ['oppo', 'apple', 'samsung', 'xiaomi'];
+function filter() {
+    for (let i = 0; i < brand.length; i++) {
+        listBrand.insertAdjacentHTML('beforeend', `
+        <a ><li  class= "itemBrand" style="background-color: darkgrey; height: 150px;width: 150px;" >
+          ${brand[i]}
+        </li></a>` )
+    };
+    let itemBrand = document.getElementsByClassName('itemBrand');
+    for (let i = 0; i < itemBrand.length; i++) {
+        itemBrand[i].addEventListener('click', () => {
+            loadFilterBrand(brand[i])
+        })
+    }
+
+};
+filter();
+const loadproduct = document.getElementById('loadproduct')
+function loadFilterBrand(chosenBrand) {
+    console.log(chosenBrand);
+    loadproduct.innerHTML = "";
+    for (let i = 0; i < productData.length; i++) {
+        if (productData[i].productBrand.toLowerCase() == chosenBrand.toLowerCase()) {
+            console.log('ok');
+
+            loadproduct.insertAdjacentHTML('beforeend', `
+                <li style="background-color: darkgrey; height: 150px;width: 150px;" >
+                <div class="product-show" >
+                    <a class="reletive" href="" onclick="">
+                    
+                        <p>${productData[i].productName}</p>
+                        <p>${productData[i].price}</p>
+                </div>
+                <div class="info-box">  
+                <a href="Main.html" ></a>
+                <button class="btnAddCart" onclick="">Add to Cart</button>
+                <button class="btnDetail" onclick="">Detail</button>
+                </div>
+            </li>` )
+            listProduct.style.display = 'none';
+        } else {
+            console.log('fail');
+
+        }
+    }
+};
