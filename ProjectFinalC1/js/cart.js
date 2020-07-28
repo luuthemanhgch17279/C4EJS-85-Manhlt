@@ -17,30 +17,20 @@ function loadListCartProduct() {
     if (productInCart && cartContent) {
         cartContent.innnerHTML = '';
         for (let i = 0; i < productInCart.length; i++) {
-            cartContent.insertAdjacentHTML('beforeend', `
-            <div class="    ">
-                <img src="" alt="">
-                    Name Product:  <span>${productInCart[i].productName}</span>
-            </div>
-            <div class="productPrice">
-                Price: <span> ${productInCart[i].price}</span>
-            </div>
-            <div claas="productQuantity">
-                Product Quantity:
-            <span>${productInCart[i].inCart}</span>
-            </div>
-            <div class="total">
-                Total: <span> ${productInCart[i].inCart * productInCart[i].price}</span>
-            </div>
-                <button class="btnRemove">Remove</button>
-            </br></br>`);
+            cartContent.insertAdjacentHTML('beforeend', 
+                `<td>${productInCart[i].productName}</td>
+                <td>${productInCart[i].price}</td>
+                <td>${productInCart[i].inCart}</td>
+                <td>${productInCart[i].inCart * productInCart[i].price}</td>
+                <td><button class="btnRemove btn btn-secondary">Remove</button></td>`
+            );
         };
-        cartContent.innerHTML += `
-        <div class ="totalCart">
-            Total Bill: ${cartTotal}
+        cartContent.innerHTML +=`
+        <div class = "totalCart">
+            <h4>Total Bill: ${cartTotal}đ</h4> 
         </div>`
-
     };
+
 
     const btnRemove = document.getElementsByClassName('btnRemove');
     for (let i = 0; i < btnRemove.length; i++) {

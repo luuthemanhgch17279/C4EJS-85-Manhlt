@@ -1,16 +1,5 @@
 var productData = [
     {
-        productID: "P025",
-        productName: "Huawei P40 Pro",
-        productBrand: "Oppo",
-        price: 21990000,
-        quantity: 19,
-        description: "Thỏa sức sáng tạo với 4 camera Leica chụp ảnh hàng đầu thế giới, mang đến cuộc cách mạng về hiệu năng bằng bộ vi xử lý Kirin 990 5G tiên tiến, Huawei P40 Pro mở ra một tương lai mới đầy đột phá dành cho bạn.",
-        provider: "Viettel",
-        inCart: 0,
-        img: ['./asset/image/ssa71-1.png', './asset/image/ssa71-2.png', './asset/image/ssa71-3.png']
-    },
-    {
         productID: "P001",
         productName: "Samsung Galaxy A31",
         productBrand: "Samsung",
@@ -305,7 +294,9 @@ const loginForm = document.getElementById("login_form");
 const adminForm = document.getElementById("admin_form")
 const detaiForm = document.getElementById("detail_form");
 const regiterForm = document.getElementById("register_form");
-const billForm = document.getElementById("manageBill_form")
+const billForm = document.getElementById("manageBill_form");
+const filterForm = document.getElementById("filter_form");
+
 
 
 const btnLogin = document.getElementById("btn_login");
@@ -315,6 +306,12 @@ const btnRegister = document.getElementById("btn_register")
 const btnSubmitRegister = document.getElementById("btnRegister")
 const btnManageBill = document.getElementById("btnManageBill")
 const btnBack = document.getElementById("btnBack")
+
+//btn for admin
+const btnViewProduct = document.getElementById("btn_viewListProduct");
+const btnAddNewProduct = document.getElementById("btn_addNewProduct");
+const addProductForm = document.getElementById("add_product");
+const viewProductForm = document.getElementById("view_product");
 
 const userName = document.getElementById("userName");
 const password = document.getElementById("pwd");
@@ -333,9 +330,19 @@ adminForm.style.display = "none";
 userForm.style.display = "block";
 btnLogout.style.display = "none";
 cartForm.style.display = "block";
-btnLogin.style.display = "none";
+btnLogin.style.display = "block";
 regiterForm.style.display = "none";
 btnBack.style.display = "none";
+btnManageBill.style.display = "none";
+billForm.style.display = "none";
+
+btnViewProduct.style.display ="none";
+btnAddNewProduct.style.display="none";
+
+
+
+
+// filterForm.style.display = "none";
 
 btnManageBill.addEventListener("click", function () {
     adminForm.style.display = "none";
@@ -354,22 +361,28 @@ btnBack.addEventListener("click", function () {
 btnLogin.addEventListener("click", function () {
     loginForm.style.display = "block";
     userForm.style.display = "none";
-    btnLogin.style.display = "none";
+    btnLogin.style.display = "block";
     cartForm.style.display = "none";
+    regiterForm.style.display = "none";
 });
 btnSubmit.addEventListener("click", function () {
     for (let i = 0; i < accountData.length; i++) {
         if (userName.value === accountData[i].userName && password.value === accountData[i].password) {
             if (accountData[i].role == "admin") {
-                adminForm.style.display = "block";
+                // adminForm.style.display = "block";
                 loginForm.style.display = "none";
                 btnLogout.style.display = "block";
+                btnLogin.style.display = "none";
+                btnViewProduct.style.display ="block";
+                btnAddNewProduct.style.display="block";
+                viewProductForm.style.display="none";
             } else if (accountData[i].role == "client") {
                 loginForm.style.display = "none";
                 alert("Welcome to " + accountData[i].userName);
                 userForm.style.display = "block";
                 cartForm.style.display = "block";
                 btnLogout.style.display = "block";
+                btnLogin.style.display = "none";
             }
         }
     }
@@ -549,16 +562,11 @@ function loadListProduct() {
     for (let i = 0; i < productData.length; i++) {
         listProduct.insertAdjacentHTML('beforeend', `<li>
         <div class="product-show" >
-            <a class="reletive" href="" onclick="">
-                <img src="${productData[i].img[0]}" style ="width:150px; height: 150px" alt="">
-                <p>${productData[i].productName}</p>
-                <p>${productData[i].price} đ</p>
-            </a>
-        </div>
-        <div class="info-box">
-        <a href="Main.html" ></a>
-        <button class="btnAddCart" >Add to Cart</button>
-        <button class="btnDetail" onclick="showDivDetail()">Detail</button>
+                <img src="${productData[i].img[0]}">
+                <h5>${productData[i].productName}</h5>
+                <strong>${productData[i].price}đ</strong>
+            <button class="btnAddCart">Thêm vào giỏ hàng</button>
+            <button class="btnDetail" onclick="showDivDetail()">Chi tiết sản phẩm</button>
         </div>
     </li>` )
     };
@@ -581,16 +589,18 @@ function loadListProduct() {
             const pDetail = document.getElementById("productDetail")
 
             pDetail.insertAdjacentHTML('beforeend',
-                `<tr>
+                `<tr class="product-detail">
                     <td><img src="${productData[i].img[i]}" alt=""></td> 
-                    <td><p>${productData[i].productID}</p></td>  
-                    <td><p>${productData[i].productID}</p></td>
-                    <td><p>${productData[i].productName}</p></td>
-                    <td><p>${productData[i].productBrand}</p></td>
-                    <td><p>${productData[i].price}</p></td>
-                    <td><p>${productData[i].quantity}</p></td>
-                    <td><p>${productData[i].description}</p></td>
-                    <td><p>${productData[i].provider}</p></td>
+                    <td><h5>${productData[i].productName}</h5></td>
+                    <td>
+                    <h5>Nhà Phát Hành: 3${productData[i].productBrand}</h5>
+                    </td>
+                    <td><strong>${productData[i].price}đ</strong></td>
+                    <td>
+                    <h4>Chi tiết sản phẩm:</h4>
+                    <p>${productData[i].description}</p>
+                    </td>
+                    <td><p>Nhà Phân phối: ${productData[i].provider}</p></td>
                 </tr>`);
         });
     }
@@ -709,9 +719,10 @@ function loadFilterBrand(chosenBrand) {
             loadproduct.insertAdjacentHTML('beforeend', `
                 <li style="background-color: darkgrey; height: 150px;width: 150px;" >
                 <div class="product-show" >
-                    <a class="reletive" href="" onclick="">
+                    <a class="reletive" href="" onclick=""> 
                     
                         <p>${productData[i].productName}</p>
+                        <img src="${productData[i].img[0]}" style ="width:50%; height: 50%" alt="">
                         <p>${productData[i].price}</p>
                 </div>
                 <div class="info-box">  
