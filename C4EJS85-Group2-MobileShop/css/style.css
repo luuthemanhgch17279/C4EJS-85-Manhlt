@@ -17,11 +17,8 @@ body {
     text-transform: uppercase;
 }
 
-.semi-bold {
-    font-weight: 500;
-    font-size: 16px;
-    margin-bottom: 10px;
-}
+
+/* header */
 
 header {
     width: 100%;
@@ -37,6 +34,12 @@ header {
 .head h1 {
     font-size: 50px;
 }
+
+
+/* header */
+
+
+/* Navigation bar */
 
 .nav {
     height: 48px;
@@ -94,6 +97,29 @@ input {
     float: left;
 }
 
+
+/* Navigation bar */
+
+
+/* log in and sign up */
+
+.logIn,
+.signUp {
+    margin-top: 20px;
+}
+
+.btn-login button {
+    margin-top: 20px;
+    margin-left: 0;
+    background-color: #383838;
+}
+
+
+/* log in and sign up */
+
+
+/* Guest user form */
+
 .content ul {
     display: flex;
     flex-wrap: wrap;
@@ -145,11 +171,20 @@ strong {
     height: auto;
 }
 
-#productDetail img {
+.product-detail {
+    width: max-content;
+    height: auto;
+}
+
+.carousel-item img {
+    margin-left: 20rem;
     width: 500px;
     height: 500px;
-    display: flex;
-    float: left;
+}
+
+.carousel-control-prev,
+.carousel-control-nex {
+    color: black;
 }
 
 #productDetail h5 {
@@ -171,6 +206,12 @@ span {
     margin-left: 10px;
     color: #2c3e50;
 }
+
+
+/* Guest user form */
+
+
+/* admin form */
 
 .add_product {
     margin-top: 20px;
@@ -230,3 +271,6 @@ span {
     margin-left: 0;
     background-color: #383838;
 }
+
+
+/* admin form */

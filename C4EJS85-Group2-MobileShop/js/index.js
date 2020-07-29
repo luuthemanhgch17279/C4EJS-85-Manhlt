@@ -288,140 +288,431 @@ const accountData = [{
     }
 ]
 
+// JS code - Mạnh
 const loginForm = document.getElementById("login_form");
-const adminForm = document.getElementById("admin_form")
-const detaiForm = document.getElementById("detail_form");
 const regiterForm = document.getElementById("register_form");
-const billForm = document.getElementById("manageBill_form");
-const filterForm = document.getElementById("filter_form");
-
-
-
 const btnLogin = document.getElementById("btn_login");
 const btnSubmit = document.getElementById("btnSubmit");
 const btnLogout = document.getElementById("btn_logout");
-const btnRegister = document.getElementById("btn_register")
-const btnSubmitRegister = document.getElementById("btnRegister")
+const btnRegister = document.getElementById("btn_register");
+const btnSubmitRegister = document.getElementById("btnRegister");
+const userName = document.getElementById("userName");
+const password = document.getElementById("pwd");
+const newUserName = document.getElementById("uName");
+const passwordRegister = document.getElementById("password");
+const confirmPassword = document.getElementById("confirmPassword");
+
+// Huân
+const userForm = document.getElementById("user_form");
+const cartForm = document.getElementById("cart_form");
+const detailForm = document.getElementById("detail_form");
 const btnManageBill = document.getElementById("btnManageBill")
 const btnBack = document.getElementById("btnBack")
 
-//btn for admin
+//Quân + Dương
+const adminForm = document.getElementById("admin_form")
+const filterForm = document.getElementById("filter_form");
 const btnViewProduct = document.getElementById("btn_viewListProduct");
 const btnAddNewProduct = document.getElementById("btn_addNewProduct");
 const addProductForm = document.getElementById("add_product");
 const viewProductForm = document.getElementById("view_product");
+const billForm = document.getElementById("bill_form");
 
-const userName = document.getElementById("userName");
-const password = document.getElementById("pwd");
+showGuestForm();
 
-const uName = document.getElementById("uName");
-const passwordRegister = document.getElementById("password");
-const confirmPassword = document.getElementById("confirmPassword");
-
-const userForm = document.getElementById("user_form");
-const cartForm = document.getElementById("cart_form");
-
-// style display
-loginForm.style.display = "none";
-detaiForm.style.display = "none";
-adminForm.style.display = "none";
-userForm.style.display = "block";
-btnLogout.style.display = "none";
-cartForm.style.display = "block";
-btnLogin.style.display = "block";
-regiterForm.style.display = "none";
-btnBack.style.display = "none";
-btnManageBill.style.display = "none";
-billForm.style.display = "none";
-
-btnViewProduct.style.display = "none";
-btnAddNewProduct.style.display = "none";
-
-
-
-
-// filterForm.style.display = "none";
-
-btnManageBill.addEventListener("click", function() {
-    adminForm.style.display = "none";
-    btnManageBill.style.display = "none";
-    btnBack.style.display = "block";
-    billForm.style.display = "block";
-})
-
-btnBack.addEventListener("click", function() {
-        adminForm.style.display = "block";
-        btnManageBill.style.display = "block";
-        btnBack.style.display = "none";
-        billForm.style.display = "none";
-    })
-    // ============= Login =====================
+//Event for btn ( Log in and Sign up)
 btnLogin.addEventListener("click", function() {
-    loginForm.style.display = "block";
-    userForm.style.display = "none";
-    btnLogin.style.display = "block";
-    cartForm.style.display = "none";
-    regiterForm.style.display = "none";
+    showLoginForm();
 });
 btnSubmit.addEventListener("click", function() {
     for (let i = 0; i < accountData.length; i++) {
         if (userName.value === accountData[i].userName && password.value === accountData[i].password) {
             if (accountData[i].role == "admin") {
-                // adminForm.style.display = "block";
-                loginForm.style.display = "none";
-                btnLogout.style.display = "block";
-                btnLogin.style.display = "none";
-                btnViewProduct.style.display = "block";
-                btnAddNewProduct.style.display = "block";
-                viewProductForm.style.display = "none";
+                showAdminForm();
             } else if (accountData[i].role == "client") {
-                loginForm.style.display = "none";
                 alert("Welcome to " + accountData[i].userName);
-                userForm.style.display = "block";
-                cartForm.style.display = "block";
-                btnLogout.style.display = "block";
-                btnLogin.style.display = "none";
+                showClientForm();
             }
         }
     }
 });
-// ============= Login =====================
-
-// ============= Register account =============
 btnRegister.addEventListener("click", function() {
-    regiterForm.style.display = "block";
-    loginForm.style.display = "none";
+    showSignupForm();
 });
-
 btnSubmitRegister.addEventListener("click", function() {
     {
         if (passwordRegister.value === confirmPassword.value) {
             let newAcc = {
-                accID: uName.value + 01,
-                userName: uName.value,
+                accID: newUserName.value + 01,
+                userName: newUserName.value,
                 password: passwordRegister.value,
                 role: "client"
             }
             accountData.push(newAcc)
             console.log(accountData);
-            regiterForm.style.display = "none";
-            loginForm.style.display = "block";
+            showLoginForm();
         } else {
-            alert("00");
+            alert("Sign up failed");
         }
     }
 });
-// ============= /Register account =============
-
-
 btnLogout.addEventListener("click", function() {
-    adminForm.style.display = "none";
-    userForm.style.display = "block";
-    btnLogout.style.display = "none";
-    btnLogin.style.display = "block";
-    cartForm.style.display = "block";
+    showGuestForm();
 });
 
+//function for Log in and Sign up
+function showLoginForm() {
+    loginForm.style.display = "block";
+    btnLogin.style.display = "block";
+    regiterForm.style.display = "none";
+    userForm.style.display = "none";
+    cartForm.style.display = "none";
+    detailForm.style.display = "none";
+}
+
+function showSignupForm() {
+    regiterForm.style.display = "block";
+    loginForm.style.display = "none";
+}
+
+function showAdminForm() {
+    adminForm.style.display = "block";
+    loginForm.style.display = "none";
+    btnLogout.style.display = "block";
+    btnLogin.style.display = "none";
+    btnBack.style.display = "none";
+}
+
+function showGuestForm() {
+    loginForm.style.display = "none";
+    regiterForm.style.display = "none";
+    adminForm.style.display = "none";
+    btnLogout.style.display = "none";
+    detailForm.style.display = "none";
+    filterForm.style.display = "none";
+    userForm.style.display = "block";
+    btnLogin.style.display = "block";
+    cartForm.style.display = "block";
+}
+
+function showClientForm() {
+    loginForm.style.display = "none";
+    btnLogin.style.display = "none";
+    userForm.style.display = "block";
+    cartForm.style.display = "block";
+    btnLogout.style.display = "block";
+}
+
+//Event for btn (manage bill by admin)
+btnManageBill.addEventListener("click", function() {
+    showBillManage();
+})
+
+btnBack.addEventListener("click", function() {
+    showAdminForm();
+})
+
+//fuction for btn manage bill by admin
+function showBillManage() {
+    adminForm.style.display = "none";
+    btnManageBill.style.display = "none";
+    btnBack.style.display = "block";
+    billForm.style.display = "block";
+}
+
+
+
+//JS code - Huân
+//Tạo localStorage, đưa toàn bộ Product Data vào.
+const storageProductData = 'productData';
+localStorage.setItem(storageProductData, JSON.stringify(productData));
+const productDataString = localStorage.getItem(storageProductData);
+
+//đoạn điều kiện check xem data sản phẩm ban đầu có chứa thông tin hay chưa
+if (productDataString) {
+    productData = JSON.parse(productDataString);
+} else {
+    productData = [];
+}
+const listProduct = document.getElementById('listProduct');
+
+// function này đọc dữ liệu từ array data ra và show ra html (màn hình)
+function loadListProduct(chosenProduct) {
+    if (chosenProduct.length == 0) {
+        listProduct.innerHTML = 'Không Tìm Thấy Sản Phẩm'
+    } else {
+        listProduct.innerHTML = '';
+        for (let i = 0; i < chosenProduct.length; i++) {
+            listProduct.insertAdjacentHTML('beforeend', `<li>
+            <div class="product-show" >
+                    <img src="${chosenProduct[i].img[0]}">
+                    <h5>${chosenProduct[i].productName}</h5>
+                    <strong>${chosenProduct[i].price}đ</strong>
+                <button class="btnAddCart">Thêm vào giỏ hàng</button>
+                <button class="btnDetail">Chi tiết sản phẩm</button>
+            </div>
+        </li>`)
+        };
+        const btnDetail = document.getElementsByClassName('btnDetail');
+        const btnAddCart = document.getElementsByClassName('btnAddCart');
+
+        for (let i = 0; i < btnAddCart.length; i++) {
+            btnAddCart[i].addEventListener('click', () => {
+                cartNumber(chosenProduct[i]);
+                cartTotal(chosenProduct[i]);
+            })
+        }
+        for (let i = 0; i < chosenProduct.length; i++) {
+            btnDetail[i].addEventListener('click', () => {
+                loadDetailProduct(productData[i]);
+            });
+        }
+    }
+};
+
+function loadDetailProduct(chosenProduct) {
+    userForm.style.display = "none";
+    cartForm.style.display = "block";
+    detailForm.style.display = "block";
+    const pDetail = document.getElementById("productDetail");
+
+    pDetail.insertAdjacentHTML('beforeend',
+        `<tr class="product-detail">
+            <td>         
+                <div id="demo" class="carousel slide" data-ride="carousel">
+
+                <!-- Indicators -->
+                <ul class="carousel-indicators">
+                    <li data-target="#demo" data-slide-to="0" class="active"></li>
+                    <li data-target="#demo" data-slide-to="1"></li>
+                    <li data-target="#demo" data-slide-to="2"></li>
+                </ul>
+
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="${chosenProduct.img[0]}" width="1100" height="500">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="${chosenProduct.img[1]}" width="1100" height="500">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="${chosenProduct.img[2]}"  width="1100" height="500">
+                    </div>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#demo" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
+            </td>           
+            <td><h5>${chosenProduct.productName}</h5></td>
+            <td>
+            <h5>Nhà Phát Hành: ${chosenProduct.productBrand}</h5>
+            </td>
+            <td><strong>${chosenProduct.price}đ</strong></td>
+            <td>
+            <h4>Chi tiết sản phẩm:</h4>
+            <p>${chosenProduct.description}</p>
+            </td>
+            <td><p>Nhà Phân phối: ${chosenProduct.provider}</p></td>
+            <td> <button class="btnAddCart">Thêm vào giỏ hàng</button> </td>
+        </tr>`);
+    const btnAddCart = document.getElementsByClassName('btnAddCart');
+
+    for (let i = 0; i < btnAddCart.length; i++) {
+        btnAddCart[i].addEventListener('click', () => {
+            cartNumber(chosenProduct[i]);
+            cartTotal(chosenProduct[i]);
+        })
+    }
+}
+
+//function này hiển thị số product đã đc chọn có sẵn trong localstr, reload trang nhưg số sản phẩm trong cart k bị mất
+function loadNumberInCart() {
+    let productNumberInCarts = localStorage.getItem('CartNumbers');
+    productNumberInCarts = parseInt(productNumberInCarts);
+    if (productNumberInCarts) {
+        document.getElementById('cartNumbers').textContent = productNumberInCarts;
+    }
+}
+
+//function thêm vào giỏ hàng
+function cartNumber(chosenProduct) {
+
+    let productNumberInCarts = localStorage.getItem('CartNumbers'); //lấy ra số product đag có trong cart
+    productNumberInCarts = parseInt(productNumberInCarts);
+    //đoạn này kiểm tra xem trong cart có product nào chưa
+    if (productNumberInCarts) {
+        localStorage.setItem('CartNumbers', productNumberInCarts + 1); // có rồi thì +1
+        document.getElementById('cartNumbers').textContent = productNumberInCarts + 1; //đoạn này hiển thị cart numberr lên màn hình
+    } else {
+        localStorage.setItem('CartNumbers', 1);
+        document.getElementById('cartNumbers').textContent = 1; //chưa có thì = 1
+    };
+    inCartProduct(chosenProduct);
+};
+//function này lưu lại những product đã đc chọn.
+function inCartProduct(chosenProduct) {
+    let cartItems = localStorage.getItem('productInCart');
+    cartItems = JSON.parse(cartItems);
+    if (cartItems != null) {
+        if (cartItems[chosenProduct.productID] == undefined) {
+            cartItems = {
+                ...cartItems,
+                [chosenProduct.productID]: chosenProduct,
+            }
+        }
+        cartItems[chosenProduct.productID].inCart += 1;
+    } else {
+        chosenProduct.inCart = 1;
+        cartItems = {
+            [chosenProduct.productID]: chosenProduct,
+        }
+    }
+    localStorage.setItem('productInCart', JSON.stringify(cartItems));
+};
+//fuction này tính tổng giá trị sản phẩm đc chọn
+function cartTotal(chosenProduct) {
+    let cartTotal = localStorage.getItem('totalCart');
+    if (cartTotal != null) {
+        cartTotal = parseInt(cartTotal);
+        localStorage.setItem('totalCart', cartTotal + chosenProduct.price);
+    } else {
+        localStorage.setItem('totalCart', chosenProduct.price);
+    }
+}
+loadListProduct(productData);
+loadNumberInCart();
+
+//ĐÂY LÀ FUNCTION LOAD RA LIST BILL
+function loadList() {
+    const billFromLocalStorage = localStorage.getItem('bill');
+    const billParseJson = JSON.parse(billFromLocalStorage);
+
+    //let bill = (Object.values(billParseJson));
+    // console.log(billParseJson);
+    let listProductHtml = "";
+    for (let i = 0; i < billParseJson.product.length; i++) {
+        listProductHtml += `<h5>${billParseJson.product[i].productName}</h5>`
+    }
+
+    const listBill = document.getElementById('listBill');
+    listBill.insertAdjacentHTML('beforeend', `
+        <h5> ${billParseJson.name}</h5>
+        <h5> ${billParseJson.phone}</h5>
+        <h5> ${billParseJson.add}</h5>
+        <h5> ${listProductHtml}</h5>
+        <h5> ${billParseJson.total}</h5>
+    `);
+}
+//loadList();
+
+const filterBrand = document.getElementById('filterBrand');
+const listBrand = document.getElementById('listBrand');
+let brand = ['oppo', 'apple', 'samsung', 'xiaomi'];
+
+function filter() {
+    for (let i = 0; i < brand.length; i++) {
+        listBrand.insertAdjacentHTML('beforeend', `
+        <a ><li  class= "itemBrand" style="background-color: darkgrey; height: 150px;width: 150px;" >
+          ${brand[i]}
+        </li></a>`)
+    };
+    let itemBrand = document.getElementsByClassName('itemBrand');
+    for (let i = 0; i < itemBrand.length; i++) {
+        itemBrand[i].addEventListener('click', () => {
+            loadFilterBrand(brand[i])
+        })
+    }
+
+};
+filter();
+const loadproduct = document.getElementById('loadproduct')
+
+function loadFilterBrand(chosenBrand) {
+    console.log(chosenBrand);
+    loadproduct.innerHTML = "";
+    for (let i = 0; i < productData.length; i++) {
+        if (productData[i].productBrand.toLowerCase() == chosenBrand.toLowerCase()) {
+            console.log('ok');
+            loadListProduct(productData[i]);
+            // loadproduct.insertAdjacentHTML('beforeend', `
+            //     <li style="background-color: darkgrey; height: 150px;width: 150px;" >
+            //     <div class="product-show" >
+            //         <a class="reletive" href="" onclick=""> 
+
+            //             <p>${productData[i].productName}</p>
+            //             <img src="${productData[i].img[0]}" style ="width:50%; height: 50%" alt="">
+            //             <p>${productData[i].price}</p>
+            //     </div>
+            //     <div class="info-box">  
+            //     <a href="Main.html" ></a>
+            //     <button class="btnAddCart" onclick="">Add to Cart</button>
+            //     <button class="btnDetail" onclick="">Detail</button>
+            //     </div>
+            // </li>`)
+            listProduct.style.display = 'none';
+        } else {
+            console.log('fail');
+        }
+    }
+};
+//search
+const searchKey = document.getElementById('searchKey');
+const listSearch = document.getElementById('listSearch');
+const btnSearch = document.getElementById('btnSearch');
+searchKey.addEventListener('input', (e) => {
+    let valueSearchKey = e.target.value.toLowerCase();
+    filterProduct(productData, valueSearchKey);
+
+})
+
+
+function filterProduct(listData, keyValue) {
+    let dataSearchList = listData.filter((item) => {
+        if (item.productName === undefined) {
+            return item.productName.toLowerCase().includes(keyValue);
+        } else {
+            return item.productName.toLowerCase().includes(keyValue);
+        }
+    })
+    showSearchList(dataSearchList, keyValue)
+}
+
+function showSearchList(listData, keyValue) {
+    console.log(listData);
+    if (keyValue.length > 0) {
+        if (listData.length > 3) {
+            for (let i = 0; i < 3; i++) {
+                listSearch.insertAdjacentHTML('beforeend', `
+                <li class="item">
+                
+                </li>`);
+
+            }
+        } else
+        if (listData.length > 0) {
+            for (let i = 0; i < a; i++) {
+                listSearch.insertAdjacentHTML('beforeend', `
+                <li class="item">
+                <img src="" alt="">
+                <a onclick="loadDetailProduct(${listData[i]})"> ${listData[i].productName} </a>
+                </li>`);
+            }
+        }
+    } else {
+        listSearch.innerHTML = '';
+    }
+    loadListProduct(listData);
+}
+
+
+//JS code - Quân + Dương
 // add new product
 const newID = document.getElementById('newID');
 const newName = document.getElementById('newName');
@@ -540,201 +831,30 @@ clear_btn.addEventListener('click', () => {
 });
 
 
+//slide Deatail Product
+// var slideIndex = 1;
+// showSlides(slideIndex);
 
+// function plusSlides(n) {
+//     showSlides(slideIndex += n);
+// }
 
-//Tạo localStorage, đưa toàn bộ Product Data vào.
-const storageProductData = 'productData';
-localStorage.setItem(storageProductData, JSON.stringify(productData));
-const productDataString = localStorage.getItem(storageProductData);
+// function currentSlide(n) {
+//     showSlides(slideIndex = n);
+// }
 
-//đoạn điều kiện check xem data sản phẩm ban đầu có chứa thông tin hay chưa
-if (productDataString) {
-    productData = JSON.parse(productDataString);
-} else {
-    productData = [];
-}
-const listProduct = document.getElementById('listProduct');
-
-// function này đọc dữ liệu từ array data ra và show ra html (màn hình)
-function loadListProduct() {
-    for (let i = 0; i < productData.length; i++) {
-        listProduct.insertAdjacentHTML('beforeend', `<li>
-        <div class="product-show" >
-                <img src="${productData[i].img[0]}">
-                <h5>${productData[i].productName}</h5>
-                <strong>${productData[i].price}đ</strong>
-            <button class="btnAddCart">Thêm vào giỏ hàng</button>
-            <button class="btnDetail" onclick="showDivDetail()">Chi tiết sản phẩm</button>
-        </div>
-    </li>`)
-    };
-    const btnDetail = document.getElementsByClassName('btnDetail');
-    const btnAddCart = document.getElementsByClassName('btnAddCart');
-
-
-    for (let i = 0; i < btnAddCart.length; i++) {
-        btnAddCart[i].addEventListener('click', () => {
-            cartNumber(productData[i]);
-            cartTotal(productData[i]);
-        })
-    }
-    for (let i = 0; i < productData.length; i++) {
-        btnDetail[i].addEventListener('click', () => {
-            userForm.style.display = "none";
-            cartForm.style.display = "none";
-            detaiForm.style.display = "block";
-
-            const pDetail = document.getElementById("productDetail")
-
-            pDetail.insertAdjacentHTML('beforeend',
-                `<tr class="product-detail">
-                    <td><img src="${productData[i].img[i]}" alt=""></td> 
-                    <td><h5>${productData[i].productName}</h5></td>
-                    <td>
-                    <h5>Nhà Phát Hành: 3${productData[i].productBrand}</h5>
-                    </td>
-                    <td><strong>${productData[i].price}đ</strong></td>
-                    <td>
-                    <h4>Chi tiết sản phẩm:</h4>
-                    <p>${productData[i].description}</p>
-                    </td>
-                    <td><p>Nhà Phân phối: ${productData[i].provider}</p></td>
-                </tr>`);
-        });
-    }
-};
-
-
-//function này hiển thị số product đã đc chọn có sẵn trong localstr, reload trang nhưg số sản phẩm trong cart k bị mất
-function loadNumberInCart() {
-    let productNumberInCarts = localStorage.getItem('CartNumbers');
-    productNumberInCarts = parseInt(productNumberInCarts);
-    if (productNumberInCarts) {
-        document.getElementById('cartNumbers').textContent = productNumberInCarts;
-    }
-}
-//function thêm vào giỏ hàng
-function cartNumber(chosenProduct) {
-
-    let productNumberInCarts = localStorage.getItem('CartNumbers'); //lấy ra số product đag có trong cart
-    productNumberInCarts = parseInt(productNumberInCarts);
-    //đoạn này kiểm tra xem trong cart có product nào chưa
-    if (productNumberInCarts) {
-        localStorage.setItem('CartNumbers', productNumberInCarts + 1); // có rồi thì +1
-        document.getElementById('cartNumbers').textContent = productNumberInCarts + 1; //đoạn này hiển thị cart numberr lên màn hình
-    } else {
-        localStorage.setItem('CartNumbers', 1);
-        document.getElementById('cartNumbers').textContent = 1; //chưa có thì = 1
-    };
-    inCartProduct(chosenProduct);
-};
-//function này lưu lại những product đã đc chọn.
-function inCartProduct(chosenProduct) {
-    let cartItems = localStorage.getItem('productInCart');
-    cartItems = JSON.parse(cartItems);
-    if (cartItems != null) {
-        if (cartItems[chosenProduct.productID] == undefined) {
-            cartItems = {
-                ...cartItems,
-                [chosenProduct.productID]: chosenProduct,
-            }
-        }
-        cartItems[chosenProduct.productID].inCart += 1;
-    } else {
-        chosenProduct.inCart = 1;
-        cartItems = {
-            [chosenProduct.productID]: chosenProduct,
-        }
-    }
-    localStorage.setItem('productInCart', JSON.stringify(cartItems));
-};
-//fuction này tính tổng giá trị sản phẩm đc chọn
-function cartTotal(chosenProduct) {
-    let cartTotal = localStorage.getItem('totalCart');
-    if (cartTotal != null) {
-        cartTotal = parseInt(cartTotal);
-        localStorage.setItem('totalCart', cartTotal + chosenProduct.price);
-    } else {
-        localStorage.setItem('totalCart', chosenProduct.price);
-    }
-}
-loadListProduct();
-loadNumberInCart();
-
-
-//ĐÂY KAF FUNCTION LOAD RA LIST BILL
-function loadList() {
-    const billFromLocalStorage = localStorage.getItem('bill');
-    const billParseJson = JSON.parse(billFromLocalStorage);
-
-    //let bill = (Object.values(billParseJson));
-    // console.log(billParseJson);
-    let listProductHtml = "";
-    for (let i = 0; i < billParseJson.product.length; i++) {
-        listProductHtml += `<h5>${billParseJson.product[i].productName}</h5>`
-    }
-
-    const listBill = document.getElementById('listBill');
-    listBill.insertAdjacentHTML('beforeend', `
-        <h5> ${billParseJson.name}</h5>
-        <h5> ${billParseJson.phone}</h5>
-        <h5> ${billParseJson.add}</h5>
-        <h5> ${listProductHtml}</h5>
-        <h5> ${billParseJson.total}</h5>
-    `);
-}
-
-loadList();
-
-const filterBrand = document.getElementById('filterBrand');
-const listBrand = document.getElementById('listBrand');
-
-let brand = ['oppo', 'apple', 'samsung', 'xiaomi'];
-
-function filter() {
-    for (let i = 0; i < brand.length; i++) {
-        listBrand.insertAdjacentHTML('beforeend', `
-        <a ><li  class= "itemBrand" style="background-color: darkgrey; height: 150px;width: 150px;" >
-          ${brand[i]}
-        </li></a>`)
-    };
-    let itemBrand = document.getElementsByClassName('itemBrand');
-    for (let i = 0; i < itemBrand.length; i++) {
-        itemBrand[i].addEventListener('click', () => {
-            loadFilterBrand(brand[i])
-        })
-    }
-
-};
-filter();
-const loadproduct = document.getElementById('loadproduct')
-
-function loadFilterBrand(chosenBrand) {
-    console.log(chosenBrand);
-    loadproduct.innerHTML = "";
-    for (let i = 0; i < productData.length; i++) {
-        if (productData[i].productBrand.toLowerCase() == chosenBrand.toLowerCase()) {
-            console.log('ok');
-
-            loadproduct.insertAdjacentHTML('beforeend', `
-                <li style="background-color: darkgrey; height: 150px;width: 150px;" >
-                <div class="product-show" >
-                    <a class="reletive" href="" onclick=""> 
-                    
-                        <p>${productData[i].productName}</p>
-                        <img src="${productData[i].img[0]}" style ="width:50%; height: 50%" alt="">
-                        <p>${productData[i].price}</p>
-                </div>
-                <div class="info-box">  
-                <a href="Main.html" ></a>
-                <button class="btnAddCart" onclick="">Add to Cart</button>
-                <button class="btnDetail" onclick="">Detail</button>
-                </div>
-            </li>`)
-            listProduct.style.display = 'none';
-        } else {
-            console.log('fail');
-
-        }
-    }
-};
+// function showSlides(n) {
+//     var i;
+//     var slides = document.getElementsByClassName("mySlides");
+//     var dots = document.getElementsByClassName("dot");
+//     if (n > slides.length) { slideIndex = 1 }
+//     if (n < 1) { slideIndex = slides.length }
+//     for (i = 0; i < slides.length; i++) {
+//         slides[i].style.display = "none";
+//     }
+//     for (i = 0; i < dots.length; i++) {
+//         dots[i].className = dots[i].className.replace(" active", "");
+//     }
+//     slides[slideIndex - 1].style.display = "block";
+//     dots[slideIndex - 1].className += " active";
+// }
