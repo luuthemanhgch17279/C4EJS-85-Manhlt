@@ -140,9 +140,7 @@ function creatBill() {
 
     }
     localStorage.setItem('bill', JSON.stringify(finalBill));
-    localStorage.removeItem('productInCart');
-    localStorage.removeItem('CartNumbers');
-    localStorage.removeItem('totalCart');
+
 };
 
 //function này dùng để show ra detail  đơn hàng sau khi ấn buy
@@ -150,8 +148,12 @@ function showBillDetail() {
     // let bill = localStorage.getItem('bill');
     // bill = JSON.parse(bill);
     const cartTotal = localStorage.getItem('totalCart');
-    if (confirm(`Your Total Bill: ${bill.total}`) == true) {
+    if (confirm(`Your Total Bill: ${cartTotal}`
+            đ) == true) {
         alert('Buy Success! Please wait for a confirmation from the staff.');
+        localStorage.removeItem('productInCart');
+        localStorage.removeItem('CartNumbers');
+        localStorage.removeItem('totalCart');
     } else {
         alert('Buy Fail.')
     };
