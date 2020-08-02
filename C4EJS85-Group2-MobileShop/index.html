@@ -24,9 +24,11 @@
         <div class="nav">
             <ul>
                 <li><a href="index.html"><button>Trang chủ</button></a></li>
-                <li><button>Giới thiệu</button></li>
                 <li><button id="btn_login">Đăng nhập</button></li>
                 <li><button id="btn_logout">Đăng xuất</button></li>
+                <li><button id="btnManageBill">Quản lý đơn hàng</button></li>
+                <li><button id="btnManageProduct">Quản Lý sản phẩm</button></li>
+                <li><button id="btnAdd">Thêm Sản Phẩm</button></li>
             </ul>
             <div class="search">
                 <input id="searchKey" type="text" placeholder="Tìm Kiếm">
@@ -43,36 +45,54 @@
 
     <!-- Body of Web Page -->
     <div class="container">
+        <div class="slide" id="slide-form">
+            <img class="mySlides" src="./asset/image/ad1.png">
+            <img class="mySlides" src="./asset/image/ad2.png">
+            <img class="mySlides" src="./asset/image/ad3.png">
+            <img class="mySlides" src="./asset/image/ad4.png">
+        </div>
+
+        <div id="filter_form">
+            <div id="filterBrand">
+                <ul id="listBrand">
+                    <!-- Js-code -->
+                </ul>
+                <div class="content">
+                    <ul id="loadProduct"></ul>
+                </div>
+            </div>
+        </div>
+
         <div class="logIn" id="login_form">
             <div>
-                <label for="username">Username:</label>
-                <input class="form-control" type="text" id="userName" placeholder="Enter username">
+                <label for="username">Tên Đăng Nhập:</label>
+                <input class="form-control" type="text" id="userName">
             </div>
             <div>
-                <label for="pwd">Password:</label>
-                <input class="form-control" type="password" id="pwd" placeholder="Enter password">
+                <label for="pwd">Mật Khẩu:</label>
+                <input class="form-control" type="password" id="pwd">
             </div>
             <div class="btn-login">
-                <button type="submit" class="btn btn-secondary" id="btnSubmit">Log in</button>
-                <button class="btn btn-secondary" id="btn_register">Sign up</button>
+                <button type="submit" class="btn btn-secondary" id="btnSubmit">Đăng Nhập</button>
+                <button class="btn btn-secondary" id="btn_register">Đăng Ký</button>
             </div>
         </div>
 
         <div class="signUp" id="register_form">
             <div>
-                <label for="username">Username:</label>
-                <input type="text" class="form-control" id="uName" placeholder="Enter username">
+                <label for="username">Tên Đăng Nhập:</label>
+                <input type="text" class="form-control" id="uName">
             </div>
             <div>
-                <label for="pwd">Password:</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter password">
+                <label for="pwd">Mật Khẩu:</label>
+                <input type="password" class="form-control" id="password">
             </div>
             <div>
-                <label for="pwd">Confirm Password:</label>
-                <input type="password" class="form-control" id="confirmPassword" placeholder="Enter password">
+                <label for="pwd">Nhập Lại Mật Khẩu:</label>
+                <input type="password" class="form-control" id="confirmPassword">
             </div>
             <div class="btn-login">
-                <button class="btn btn-secondary" type="submit" id="btnRegister">Sign up</button>
+                <button class="btn btn-secondary" type="submit" id="btnRegister">Đăng Ký</button>
             </div>
         </div>
 
@@ -98,94 +118,75 @@
             <div id="productDetail"></div>
         </div>
 
-        <div id="filter_form">
-            <div id="filterBrand">
-                <ul id="listBrand">
-                    <li><a href="">samsung</a></li>
-                    <li><a href="">iphone</a></li>
-                    <li><a href="">xiaomi</a></li>
-                    <li><a href="">oppo</a></li> -->
-                </ul>
-
-                <div class="content">
-                    <ul id="loadproduct"></ul>
-                </div>
-            </div>
+        <div id="admin_form">
+            <table id="table" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên Sản Phầm</th>
+                        <th>Thương Hiệu</th>
+                        <th>Giá</th>
+                        <th>Số Lượng</th>
+                        <th>Mô Tả</th>
+                        <th>Nhà Phân Phối</th>
+                        <th>Tác Vụ</th>
+                    </tr>
+                </thead>
+                <tbody id="ts_tbody">
+                    <!-- js Code -->
+                </tbody>
+            </table>
         </div>
 
-        <div id="admin_form">
-            <div class="add_product">
-                <div class="input">
-                    <i class="fas fa-qrcode"></i>
-                    <input type="text" placeholder="Enter Product ID" id="newID">
-                </div>
-                <div class="input">
-                    <i class="fas fa-tags"></i>
-                    <input type="text" placeholder="Enter Product Name" id="newName">
-                </div>
-                <div class="input">
-                    <i class="fas fa-tablet-alt"></i>
-                    <input type="text" placeholder="Enter Product Brand" id="newBrand">
-                </div>
-                <div class="input">
-                    <i class="fas fa-dollar-sign"></i>
-                    <input type="text" placeholder="Enter Price" id="newPrice">
-                </div>
-                <div class="input">
-                    <i class="fas fa-sort-numeric-up-alt"></i>
-                    <input type="text" placeholder="Enter Quantity" id="newQuantity">
-                </div>
-                <div class="input">
-                    <i class="fas fa-file-alt"></i>
-                    <input type="text" placeholder="Enter Description" id="newDescription">
-                </div>
-                <div class="input">
-                    <i class="fas fa-people-arrows"></i>
-                    <input type="text" placeholder="Enter Provider" id="newProvider">
-                </div>
-                <button class="btn btn-outline-success" id="add_btn">Add New Product</button>
-                <button class="btn btn-outline-danger" id="clear_btn">Clear Info</button>
+        <div class="add_product" id="add-product-form">
+            <div class="input">
+                <i class="fas fa-qrcode"></i>
+                <input type="text" placeholder="ID của sản phẩm" id="newID">
+            </div>
+            <div class="input">
+                <i class="fas fa-tags"></i>
+                <input type="text" placeholder="Tên sản phẩm" id="newName">
+            </div>
+            <div class="input">
+                <i class="fas fa-tablet-alt"></i>
+                <input type="text" placeholder="Nhãn hiệu" id="newBrand">
+            </div>
+            <div class="input">
+                <i class="fas fa-dollar-sign"></i>
+                <input type="text" placeholder="Giá sản phẩm" id="newPrice">
+            </div>
+            <div class="input">
+                <i class="fas fa-sort-numeric-up-alt"></i>
+                <input type="text" placeholder="Số lượng" id="newQuantity">
+            </div>
+            <div class="input">
+                <i class="fas fa-file-alt"></i>
+                <input type="text" placeholder="Mô tả" id="newDescription">
+            </div>
+            <div class="input">
+                <i class="fas fa-people-arrows"></i>
+                <input type="text" placeholder="Nhà phân phối" id="newProvider">
+            </div>
+            <button class="btn btn-outline-success" id="add_btn">Thêm và cập nhật</button>
+            <button class="btn btn-outline-danger" id="clear_btn">Xóa dữ liệu</button>
+        </div>
+
+        <div id="bill_form">
+            <div class="listBill-header">
+                <h5>Tên Khách Hàng</h5>
+                <h5>Số Điện Thoại</h5>
+                <h5>Địa Chỉ</h5>
+                <h5>Sản Phẩm Đã Mua</h5>
+                <h5>Tổng Giá Trị Đơn Hàng</h5>
             </div>
 
-            <div class="view_product">
-                <h2>List of product</h2><br>
-                <table id="table" class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Product ID</th>
-                            <th>Product Name</th>
-                            <th>Product Brand</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Description</th>
-                            <th>Provider</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ts_tbody">
-                        <!-- js Code -->
-                    </tbody>
-                </table>
-            </div>
-
-            <button id="btnManageBill">Manage bill</button>
-            <button id="btnBack">Mannage product</button>
-
-            <div id="bill_form">
-                <div class="listBill-header">
-                    <h5> Client Name</h5>
-                    <h5> Phone Number</h5>
-                    <h5> Address</h5>
-                    <h5> Product</h5>
-                    <h5> Total</h5>
-                </div>
-
-                <div id="listBill">
-                    <!-- JS code -->
-                </div>
+            <div id="listBill">
+                <!-- JS code -->
             </div>
         </div>
 </body>
 <script src="./js/index.js"></script>
+
+</html>
 
 </html>

@@ -59,7 +59,7 @@ header {
 }
 
 .nav ul li button {
-    padding: 5px 40px;
+    padding: 5px 20px;
     color: #f5f6fa;
     height: 48px;
     background-color: #383838;
@@ -183,8 +183,10 @@ strong {
 }
 
 .carousel-control-prev,
-.carousel-control-nex {
-    color: black;
+.carousel-control-next {
+    background-color: #7f8c8d;
+    border-radius: 20px;
+    width: 20px;
 }
 
 #productDetail h5 {
@@ -195,16 +197,18 @@ strong {
     padding: 10px 0;
 }
 
-#cart_form {
-    width: 20%;
-    margin: 20px;
+#cart-show {
+    background-color: #383838;
+    padding: 8px;
+    border-radius: 8px;
 }
 
 #cart_form i,
 span {
-    font-size: 30px;
+    font-size: 25px;
     margin-left: 10px;
-    color: #2c3e50;
+    color: #f5f6fa;
+    background-color: #383838;
 }
 
 
@@ -212,6 +216,14 @@ span {
 
 
 /* admin form */
+
+#admin_form {
+    margin-top: 20px;
+}
+
+#bill_form {
+    margin-top: 20px;
+}
 
 .add_product {
     margin-top: 20px;
@@ -226,6 +238,7 @@ span {
     border-radius: 10px;
     font-size: 15px;
     padding-left: 20px;
+    color: #383838;
 }
 
 .input {
@@ -256,6 +269,10 @@ span {
     margin-left: 0;
 }
 
+.btn-dark {
+    margin-left: 0;
+}
+
 .table,
 .table-bordered {
     text-align: center;
@@ -274,3 +291,45 @@ span {
 
 
 /* admin form */
+
+
+/* filter-form */
+
+#filter_form {
+    width: 25%;
+    margin-top: 20px;
+}
+
+.itemBrand {
+    width: 290px;
+    padding: 21px 0px;
+    list-style: none;
+    font-size: 17px;
+    font-style: oblique;
+    background-color: #383838;
+    color: #f5f6fa;
+    border: 2px solid;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+
+/* filter-form */
+
+
+/* Slide */
+
+.slide {
+    width: 72%;
+    float: right;
+    margin-right: 0;
+}
+
+.slide img {
+    width: 800px;
+    height: 300px;
+    margin-right: 0px;
+}
+
+
+/* Slide */

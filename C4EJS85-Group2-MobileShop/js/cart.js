@@ -9,28 +9,35 @@ function loadNumberInCart() {
 
 //function này gọi ra những product đã đc chọn
 function loadListCartProduct() {
+    let cartHeader = document.getElementsByClassName('listCartProduct table table-striped');
     let cartContent = document.getElementById('content');
     let cartTotal = localStorage.getItem('totalCart');
     let productInCart = localStorage.getItem('productInCart');
     productInCart = JSON.parse(productInCart);
-    productInCart = (Object.values(productInCart));
-    if (productInCart && cartContent) {
-        cartContent.innnerHTML = '';
-        for (let i = 0; i < productInCart.length; i++) {
-            cartContent.insertAdjacentHTML('beforeend',
-                `<td>${productInCart[i].productName}</td>
-                <td>${productInCart[i].price}</td>
-                <td>${productInCart[i].inCart}</td>
-                <td>${productInCart[i].inCart * productInCart[i].price}</td>
-                <td><button class="btnRemove btn btn-secondary">Xóa sản phẩm</button></td>`
-            );
-        };
-        cartContent.innerHTML += `
-        <div class = "totalCart">
-            <h4>Total Bill: ${cartTotal}đ</h4> 
-        </div>`
-    };
 
+    if (productInCart != null) {
+        productInCart = (Object.values(productInCart));
+        if (productInCart && cartContent) {
+            cartContent.innnerHTML = '';
+            for (let i = 0; i < productInCart.length; i++) {
+                let sumPriceProduct = productInCart[i].inCart * productInCart[i].price;
+                let totalPriceProduct = convertVND(sumPriceProduct.toString())
+                cartContent.insertAdjacentHTML('beforeend',
+                    `<td>${productInCart[i].productName}</td>
+                <td>${ convertVND(productInCart[i].price.toString())} vnđ</td>
+                <td>${productInCart[i].inCart}</td>
+                <td>${totalPriceProduct} vnđ</td>
+                <td><button class="btnRemove btn btn-secondary">Xóa sản phẩm</button></td>`
+                );
+            };
+            cartContent.innerHTML += `
+        <div class = "totalCart">
+            <h4>Total Bill: ${convertVND(cartTotal)} vnđ</h4> 
+        </div>`
+        };
+    } else {
+        cartContent.innerHTML = '<h2>Cart Is Empty!</h2>';
+    }
 
     const btnRemove = document.getElementsByClassName('btnRemove');
     for (let i = 0; i < btnRemove.length; i++) {
@@ -148,8 +155,7 @@ function showBillDetail() {
     // let bill = localStorage.getItem('bill');
     // bill = JSON.parse(bill);
     const cartTotal = localStorage.getItem('totalCart');
-    if (confirm(`Your Total Bill: ${cartTotal}`
-            đ) == true) {
+    if (confirm(`Your Total Bill: ${cartTotal}`) == true) {
         alert('Buy Success! Please wait for a confirmation from the staff.');
         localStorage.removeItem('productInCart');
         localStorage.removeItem('CartNumbers');
@@ -158,5 +164,21 @@ function showBillDetail() {
         alert('Buy Fail.')
     };
 };
+
+//function này đổi đơn vị tiền tệ
+function convertVND(a) {
+
+    let b = a.split(``);
+    if (b.length >= 4 && b.length <= 6) {
+        b.splice(b.length - 3, 0, `.`)
+    } else if (b.length >= 7 && b.length <= 9) {
+        b.splice(b.length - 3, 0, `.`);
+        b.splice(b.length - 7, 0, `.`);
+    }
+    let c = b.join(``);
+    return c;
+}
+
+
 loadListCartProduct();
 loadNumberInCart();

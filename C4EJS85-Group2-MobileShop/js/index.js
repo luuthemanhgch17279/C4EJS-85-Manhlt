@@ -301,22 +301,24 @@ const password = document.getElementById("pwd");
 const newUserName = document.getElementById("uName");
 const passwordRegister = document.getElementById("password");
 const confirmPassword = document.getElementById("confirmPassword");
+const slideForm = document.getElementById("slide-form");
 
 // Huân
 const userForm = document.getElementById("user_form");
 const cartForm = document.getElementById("cart_form");
 const detailForm = document.getElementById("detail_form");
 const btnManageBill = document.getElementById("btnManageBill")
-const btnBack = document.getElementById("btnBack")
+const btnManageProduct = document.getElementById("btnManageProduct")
 
 //Quân + Dương
 const adminForm = document.getElementById("admin_form")
 const filterForm = document.getElementById("filter_form");
 const btnViewProduct = document.getElementById("btn_viewListProduct");
 const btnAddNewProduct = document.getElementById("btn_addNewProduct");
-const addProductForm = document.getElementById("add_product");
+const addProductForm = document.getElementById("add-product-form");
 const viewProductForm = document.getElementById("view_product");
 const billForm = document.getElementById("bill_form");
+const btnAdd = document.getElementById("btnAdd");
 
 showGuestForm();
 
@@ -368,6 +370,8 @@ function showLoginForm() {
     userForm.style.display = "none";
     cartForm.style.display = "none";
     detailForm.style.display = "none";
+    filterForm.style.display = "none";
+    slideForm.style.display = "none";
 }
 
 function showSignupForm() {
@@ -380,7 +384,11 @@ function showAdminForm() {
     loginForm.style.display = "none";
     btnLogout.style.display = "block";
     btnLogin.style.display = "none";
-    btnBack.style.display = "none";
+    btnManageProduct.style.display = "none";
+    filterForm.style.display = "none";
+    btnManageBill.style.display = "block";
+    btnManageProduct.style.display = "block";
+    btnAdd.style.display = "block";
 }
 
 function showGuestForm() {
@@ -389,10 +397,17 @@ function showGuestForm() {
     adminForm.style.display = "none";
     btnLogout.style.display = "none";
     detailForm.style.display = "none";
-    filterForm.style.display = "none";
+    addProductForm.style.display = "none";
+    btnManageBill.style.display = "none";
+    btnManageProduct.style.display = "none";
+    billForm.style.display = "none";
+    btnAdd.style.display = "none";
+
+    filterForm.style.display = "block";
     userForm.style.display = "block";
     btnLogin.style.display = "block";
     cartForm.style.display = "block";
+    slideForm.style.display = "block";
 }
 
 function showClientForm() {
@@ -401,34 +416,34 @@ function showClientForm() {
     userForm.style.display = "block";
     cartForm.style.display = "block";
     btnLogout.style.display = "block";
+    filterForm.style.display = "block";
+    slideForm.style.display = "block";
 }
 
 //Event for btn (manage bill by admin)
 btnManageBill.addEventListener("click", function() {
     showBillManage();
+    addProductForm.style.display = "none";
 })
 
-btnBack.addEventListener("click", function() {
+btnManageProduct.addEventListener("click", function() {
     showAdminForm();
+    billForm.style.display = "none";
 })
 
 //fuction for btn manage bill by admin
 function showBillManage() {
     adminForm.style.display = "none";
-    btnManageBill.style.display = "none";
-    btnBack.style.display = "block";
     billForm.style.display = "block";
 }
 
-
-
 //JS code - Huân
-//Tạo localStorage, đưa toàn bộ Product Data vào.
+//T?o localStorage, dua toàn b? Product Data vào.
 const storageProductData = 'productData';
 localStorage.setItem(storageProductData, JSON.stringify(productData));
 const productDataString = localStorage.getItem(storageProductData);
 
-//đoạn điều kiện check xem data sản phẩm ban đầu có chứa thông tin hay chưa
+//check xem data sản phẩm ban đầu có chứa thông tin hay chưa
 if (productDataString) {
     productData = JSON.parse(productDataString);
 } else {
@@ -439,7 +454,7 @@ const listProduct = document.getElementById('listProduct');
 // function này đọc dữ liệu từ array data ra và show ra html (màn hình)
 function loadListProduct(chosenProduct) {
     if (chosenProduct.length == 0) {
-        listProduct.innerHTML = 'Không Tìm Thấy Sản Phẩm'
+        listProduct.innerHTML = 'không tìm thấy kết quả nào phù hợp với từ khóa'
     } else {
         listProduct.innerHTML = '';
         for (let i = 0; i < chosenProduct.length; i++) {
@@ -447,7 +462,7 @@ function loadListProduct(chosenProduct) {
             <div class="product-show" >
                     <img src="${chosenProduct[i].img[0]}">
                     <h5>${chosenProduct[i].productName}</h5>
-                    <strong>${chosenProduct[i].price}đ</strong>
+                    <strong>${convertVND(chosenProduct[i].price.toString())}d</strong>
                 <button class="btnAddCart">Thêm vào giỏ hàng</button>
                 <button class="btnDetail">Chi tiết sản phẩm</button>
             </div>
@@ -458,6 +473,7 @@ function loadListProduct(chosenProduct) {
 
         for (let i = 0; i < btnAddCart.length; i++) {
             btnAddCart[i].addEventListener('click', () => {
+                alert('Thêm Sản Phẩm Thành Công');
                 cartNumber(chosenProduct[i]);
                 cartTotal(chosenProduct[i]);
             })
@@ -469,7 +485,7 @@ function loadListProduct(chosenProduct) {
         }
     }
 };
-
+// function này load ra detailsản phẩm
 function loadDetailProduct(chosenProduct) {
     userForm.style.display = "none";
     cartForm.style.display = "block";
@@ -491,13 +507,13 @@ function loadDetailProduct(chosenProduct) {
                 <!-- The slideshow -->
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="${chosenProduct.img[0]}" width="1100" height="500">
+                        <img src="${chosenProduct.img[0]}">
                     </div>
                     <div class="carousel-item">
-                        <img src="${chosenProduct.img[1]}" width="1100" height="500">
+                        <img src="${chosenProduct.img[1]}">
                     </div>
                     <div class="carousel-item">
-                        <img src="${chosenProduct.img[2]}"  width="1100" height="500">
+                        <img src="${chosenProduct.img[2]}">
                     </div>
                 </div>
 
@@ -514,25 +530,26 @@ function loadDetailProduct(chosenProduct) {
             <td>
             <h5>Nhà Phát Hành: ${chosenProduct.productBrand}</h5>
             </td>
-            <td><strong>${chosenProduct.price}đ</strong></td>
+            <td><strong>${convertVND(chosenProduct.price.toString())}d</strong></td>
             <td>
             <h4>Chi tiết sản phẩm:</h4>
             <p>${chosenProduct.description}</p>
             </td>
-            <td><p>Nhà Phân phối: ${chosenProduct.provider}</p></td>
-            <td> <button class="btnAddCart">Thêm vào giỏ hàng</button> </td>
+            <td><p>Nhà Phân Phối: ${chosenProduct.provider}</p></td>
+            <td> <button class="btnAddCart btn btn-dark">Thêm vào giỏ hàng</button> </td>
         </tr>`);
     const btnAddCart = document.getElementsByClassName('btnAddCart');
 
     for (let i = 0; i < btnAddCart.length; i++) {
         btnAddCart[i].addEventListener('click', () => {
+            alert('Thêm S?n Ph?m Thành Công');
             cartNumber(chosenProduct[i]);
             cartTotal(chosenProduct[i]);
         })
     }
 }
 
-//function này hiển thị số product đã đc chọn có sẵn trong localstr, reload trang nhưg số sản phẩm trong cart k bị mất
+//function này hiển thị sản phẩm trong local storage
 function loadNumberInCart() {
     let productNumberInCarts = localStorage.getItem('CartNumbers');
     productNumberInCarts = parseInt(productNumberInCarts);
@@ -541,22 +558,22 @@ function loadNumberInCart() {
     }
 }
 
-//function thêm vào giỏ hàng
+//function Add to card
 function cartNumber(chosenProduct) {
-
-    let productNumberInCarts = localStorage.getItem('CartNumbers'); //lấy ra số product đag có trong cart
+    let productNumberInCarts = localStorage.getItem('CartNumbers'); //lấy ra product đang có trong cart
     productNumberInCarts = parseInt(productNumberInCarts);
-    //đoạn này kiểm tra xem trong cart có product nào chưa
+    //kiểm tra xem trong cart có product nào chưa
     if (productNumberInCarts) {
         localStorage.setItem('CartNumbers', productNumberInCarts + 1); // có rồi thì +1
-        document.getElementById('cartNumbers').textContent = productNumberInCarts + 1; //đoạn này hiển thị cart numberr lên màn hình
+        document.getElementById('cartNumbers').textContent = productNumberInCarts + 1; //hiển thị cart numberr lên màn hình
     } else {
         localStorage.setItem('CartNumbers', 1);
-        document.getElementById('cartNumbers').textContent = 1; //chưa có thì = 1
+        document.getElementById('cartNumbers').textContent = 1; //chua có thì = 1
     };
     inCartProduct(chosenProduct);
 };
-//function này lưu lại những product đã đc chọn.
+
+//function này luu những product dã được chọn.
 function inCartProduct(chosenProduct) {
     let cartItems = localStorage.getItem('productInCart');
     cartItems = JSON.parse(cartItems);
@@ -576,7 +593,8 @@ function inCartProduct(chosenProduct) {
     }
     localStorage.setItem('productInCart', JSON.stringify(cartItems));
 };
-//fuction này tính tổng giá trị sản phẩm đc chọn
+
+//fuction này tính tổng giá trị sản phẩm đã được chọn
 function cartTotal(chosenProduct) {
     let cartTotal = localStorage.getItem('totalCart');
     if (cartTotal != null) {
@@ -589,11 +607,10 @@ function cartTotal(chosenProduct) {
 loadListProduct(productData);
 loadNumberInCart();
 
-//ĐÂY LÀ FUNCTION LOAD RA LIST BILL
+//ÐÂY LÀ FUNCTION LOAD RA LIST BILL. các này a nh? g?i function b?ng cách addlistener ý, cho d?
 function loadList() {
     const billFromLocalStorage = localStorage.getItem('bill');
     const billParseJson = JSON.parse(billFromLocalStorage);
-
     //let bill = (Object.values(billParseJson));
     // console.log(billParseJson);
     let listProductHtml = "";
@@ -602,16 +619,18 @@ function loadList() {
     }
 
     const listBill = document.getElementById('listBill');
-    listBill.insertAdjacentHTML('beforeend', `
-        <h5> ${billParseJson.name}</h5>
-        <h5> ${billParseJson.phone}</h5>
-        <h5> ${billParseJson.add}</h5>
+    for (let i = 0; i < billParseJson.length; i++) {
+        listBill.insertAdjacentHTML('beforeend', `
+        <h5> ${billParseJson[i].name}</h5>
+        <h5> ${billParseJson[i].phone}</h5>
+        <h5> ${billParseJson[i].add}</h5>
+        <h5> ${billParseJson[i].date}</h5>
         <h5> ${listProductHtml}</h5>
-        <h5> ${billParseJson.total}</h5>
+        <h5> ${convertVND(billParseJson[i].total.toString())}</h5>
     `);
+    }
 }
 //loadList();
-
 const filterBrand = document.getElementById('filterBrand');
 const listBrand = document.getElementById('listBrand');
 let brand = ['oppo', 'apple', 'samsung', 'xiaomi'];
@@ -619,9 +638,7 @@ let brand = ['oppo', 'apple', 'samsung', 'xiaomi'];
 function filter() {
     for (let i = 0; i < brand.length; i++) {
         listBrand.insertAdjacentHTML('beforeend', `
-        <a ><li  class= "itemBrand" style="background-color: darkgrey; height: 150px;width: 150px;" >
-          ${brand[i]}
-        </li></a>`)
+        <button><li class= "itemBrand"> ${brand[i]} </li></button>`)
     };
     let itemBrand = document.getElementsByClassName('itemBrand');
     for (let i = 0; i < itemBrand.length; i++) {
@@ -629,33 +646,17 @@ function filter() {
             loadFilterBrand(brand[i])
         })
     }
-
 };
 filter();
-const loadproduct = document.getElementById('loadproduct')
+const loadproduct = document.getElementById('loadProduct')
 
 function loadFilterBrand(chosenBrand) {
     console.log(chosenBrand);
     loadproduct.innerHTML = "";
     for (let i = 0; i < productData.length; i++) {
-        if (productData[i].productBrand.toLowerCase() == chosenBrand.toLowerCase()) {
+        if (productData[i].productBrand.toLowerCase() === chosenBrand.toLowerCase()) {
             console.log('ok');
             loadListProduct(productData[i]);
-            // loadproduct.insertAdjacentHTML('beforeend', `
-            //     <li style="background-color: darkgrey; height: 150px;width: 150px;" >
-            //     <div class="product-show" >
-            //         <a class="reletive" href="" onclick=""> 
-
-            //             <p>${productData[i].productName}</p>
-            //             <img src="${productData[i].img[0]}" style ="width:50%; height: 50%" alt="">
-            //             <p>${productData[i].price}</p>
-            //     </div>
-            //     <div class="info-box">  
-            //     <a href="Main.html" ></a>
-            //     <button class="btnAddCart" onclick="">Add to Cart</button>
-            //     <button class="btnDetail" onclick="">Detail</button>
-            //     </div>
-            // </li>`)
             listProduct.style.display = 'none';
         } else {
             console.log('fail');
@@ -669,9 +670,7 @@ const btnSearch = document.getElementById('btnSearch');
 searchKey.addEventListener('input', (e) => {
     let valueSearchKey = e.target.value.toLowerCase();
     filterProduct(productData, valueSearchKey);
-
 })
-
 
 function filterProduct(listData, keyValue) {
     let dataSearchList = listData.filter((item) => {
@@ -681,38 +680,53 @@ function filterProduct(listData, keyValue) {
             return item.productName.toLowerCase().includes(keyValue);
         }
     })
-    showSearchList(dataSearchList, keyValue)
+    loadListProduct(dataSearchList);
 }
 
-function showSearchList(listData, keyValue) {
-    console.log(listData);
-    if (keyValue.length > 0) {
-        if (listData.length > 3) {
-            for (let i = 0; i < 3; i++) {
-                listSearch.insertAdjacentHTML('beforeend', `
-                <li class="item">
-                
-                </li>`);
+//function này gender ra dc 1 sublist gợi ý tìm kiếm.
+// function showSearchList(listData, keyValue) {
+//     console.log(listData);
+//     if (keyValue.length > 0) {
+//         if (listData.length > 3) {
+//             for (let i = 0; i < 3; i++) {
+//                 listSearch.insertAdjacentHTML('beforeend', `
+//                 <li class="item">
 
-            }
-        } else
-        if (listData.length > 0) {
-            for (let i = 0; i < a; i++) {
-                listSearch.insertAdjacentHTML('beforeend', `
-                <li class="item">
-                <img src="" alt="">
-                <a onclick="loadDetailProduct(${listData[i]})"> ${listData[i].productName} </a>
-                </li>`);
-            }
-        }
-    } else {
-        listSearch.innerHTML = '';
+//                 </li>`);
+
+//             }
+//         } else
+//         if (listData.length > 0) {
+//             for (let i = 0; i < a; i++) {
+//                 listSearch.insertAdjacentHTML('beforeend', `
+//                 <li class="item">
+//                 <img src="" alt="">
+//                 <a onclick="loadDetailProduct(${listData[i]})"> ${listData[i].productName} </a>
+//                 </li>`);
+//             }
+//         }
+//     } else {
+//         listSearch.innerHTML = '';
+//     }
+
+//     contentUserForm.innerHTML = `<h2>Tìm th?y ${listData.length} k?t qu? cho "${keyValue}"</h2>`;
+//     loadListProduct(listData);
+// }
+
+//function này đổi đơn vị tiền tệ
+function convertVND(a) {
+    let b = a.split(``);
+    if (b.length >= 4 && b.length <= 6) {
+        b.splice(b.length - 3, 0, `.`)
+    } else if (b.length >= 7 && b.length <= 9) {
+        b.splice(b.length - 3, 0, `.`);
+        b.splice(b.length - 7, 0, `.`);
     }
-    loadListProduct(listData);
+    let c = b.join(``);
+    return c;
 }
 
-
-//JS code - Quân + Dương
+//JS code - Quân + Duong
 // add new product
 const newID = document.getElementById('newID');
 const newName = document.getElementById('newName');
@@ -736,13 +750,13 @@ function update_table() {
         <td>${data.productID}</td>
         <td>${data.productName}</td>
         <td>${data.productBrand}</td>
-        <td>${data.price}</td>
+        <td>${convertVND(data.price.toString()) }</td>
         <td>${data.quantity}</td>
         <td>${data.description}</td>
         <td>${data.provider}</td>
         <td>
-        <button class="remove_btn btn btn-danger">Delete</button>
-        <button class="update_btn btn btn-info">Update</button>
+        <button class="remove_btn btn btn-danger">Xóa</button>
+        <button class="update_btn btn btn-info">Cập Nhật</button>
         </td>
         </tr>`);
     };
@@ -756,7 +770,6 @@ function update_table() {
             update_table()
             console.log(productData);
         });
-
     };
     // Show info product
     for (let i = 0; i < update_btn.length; i++) {
@@ -770,6 +783,8 @@ function update_table() {
             newQuantity.value = productData[i].quantity;
             newDescription.value = productData[i].description;
             newProvider.value = productData[i].provider;
+            addProductForm.style.display = "block";
+            adminForm.style.display = "none";
         });
     };
 };
@@ -817,7 +832,16 @@ add_btn.addEventListener('click', () => {
         newProvider.value = '';
     };
     console.log(productData);
+    addProductForm.style.display = "none";
+    adminForm.style.display = "block";
 });
+
+btnAdd.addEventListener('click', () => {
+    addProductForm.style.display = "block";
+    adminForm.style.display = "none";
+    billForm.style.display = "none";
+})
+
 // Event for clear btn
 clear_btn.addEventListener('click', () => {
     newID.value = '';
@@ -829,3 +853,19 @@ clear_btn.addEventListener('click', () => {
     newProvider.value = '';
     update_state = false;
 });
+
+// Slide
+let myIndex = 0;
+slide();
+
+function slide() {
+    //   let i;
+    let x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) { myIndex = 1 }
+    x[myIndex - 1].style.display = "block";
+    setTimeout(slide, 2000);
+}
