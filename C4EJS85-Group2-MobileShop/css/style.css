@@ -231,6 +231,9 @@ span {
     color: #f5f6fa;
 }
 
+.itemBrand:focus{
+    background-color: #B81D22;
+}
 
 /* filter-form *
 
@@ -332,14 +335,14 @@ span {
 /* Slide */
 
 
-/* Fotter */
+/* Footer */
 
 footer {
     width: 100%;
-    height: 110px;
+    height: 250px;
     background-color: #383838;
     margin-top: 20px;
-    text-align: center;
+    display: flex;
 }
 
 footer h3 {
@@ -347,26 +350,37 @@ footer h3 {
     padding-top: 10px;
 }
 
+.location{
+    color: #f5f6fa;
+}
+
 .source a,
 i {
     float: left;
     color: #f5f6fa;
     margin-top: 16px;
+    
 }
 
 .source i {
     font-size: 30px;
-    padding-left: 8rem;
+
 }
 
 .source a {
     font-size: 20px;
     padding-left: 7px;
+    padding-right: 30px;
 }
 
 .source a:hover {
-    color: #B81D22;
+    color: #B81D22; 
 }
 
+.fa-map-marked-alt{
+    font-size: 25px;
+    margin-right: 10px;
+}
 
-/* Fotter */
+/* Footer */
+

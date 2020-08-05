@@ -656,7 +656,7 @@ allBrand()
 function loadListBrand(chosenListBrand) {
     for (let i = 0; i < chosenListBrand.length; i++) {
         listBrand.insertAdjacentHTML('beforeend', `
-        <button><li class= "itemBrand"> ${chosenListBrand[i]} </li></button>`)
+        <button class="itemBrand"><li > ${chosenListBrand[i]} </li></button>`)
     };
     let itemBrand = document.getElementsByClassName('itemBrand');
     for (let i = 0; i < itemBrand.length; i++) {
