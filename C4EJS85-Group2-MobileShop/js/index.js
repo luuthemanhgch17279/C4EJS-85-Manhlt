@@ -23,7 +23,7 @@ var productData = [{
     {
         productID: "P003",
         productName: "Oppo A31",
-        productBrand: "OPPO",
+        productBrand: "Oppo",
         price: 4190000,
         quantity: 45,
         description: "Với bộ nhớ trong cực lớn 128GB, viên pin dung lượng cao 4230 mAh và màn hình giọt nước 6,5 inch, OPPO A31 mang đến cho bạn những trải nghiệm lớn hơn, giúp cuộc sống trở nên dễ dàng hơn.",
@@ -78,7 +78,7 @@ var productData = [{
     {
         productID: "P008",
         productName: "OPPO Reno3",
-        productBrand: "OPPO",
+        productBrand: "Oppo",
         price: 11490000,
         quantity: 32,
         description: "Bạn đang cần một chiếc điện thoại chụp ảnh thực sự chuyên nghiệp ở cả camera trước và sau, hãy đến với OPPO Reno3 Pro, chiếc “camera phone” đẳng cấp, sẽ cùng bạn khai phá những khoảnh khắc vàng trong mọi bối cảnh.",
@@ -89,7 +89,7 @@ var productData = [{
     {
         productID: "P009",
         productName: "OPPO A92",
-        productBrand: "OPPO",
+        productBrand: "Oppo",
         price: 6490000,
         quantity: 46,
         description: "Màn hình chấm O tinh tế, hiệu năng mạnh mẽ, 4 camera AI 48MP và viên pin dung lượng cực “khủng”, bạn sẽ hoàn toàn hài lòng về OPPO A92, chiếc điện thoại siêu mượt mà, đầy đẳng cấp.",
@@ -366,9 +366,9 @@ btnLogout.addEventListener("click", function() {
 function showLoginForm() {
     loginForm.style.display = "block";
     btnLogin.style.display = "block";
+    cartForm.style.display = "block";
     regiterForm.style.display = "none";
     userForm.style.display = "none";
-    cartForm.style.display = "none";
     detailForm.style.display = "none";
     filterForm.style.display = "none";
     slideForm.style.display = "none";
@@ -386,9 +386,11 @@ function showAdminForm() {
     btnLogin.style.display = "none";
     btnManageProduct.style.display = "none";
     filterForm.style.display = "none";
+    searchKey.style.display = "none";
     btnManageBill.style.display = "block";
     btnManageProduct.style.display = "block";
     btnAdd.style.display = "block";
+
 }
 
 function showGuestForm() {
@@ -485,9 +487,12 @@ function loadListProduct(chosenProduct) {
         }
     }
 };
-// function này load ra detailsản phẩm
+
+// function này load ra detail sản phẩm
 function loadDetailProduct(chosenProduct) {
     userForm.style.display = "none";
+    filterForm.style.display = "none";
+    slideForm.style.display = "none";
     cartForm.style.display = "block";
     detailForm.style.display = "block";
     const pDetail = document.getElementById("productDetail");
@@ -607,62 +612,71 @@ function cartTotal(chosenProduct) {
 loadListProduct(productData);
 loadNumberInCart();
 
-//ÐÂY LÀ FUNCTION LOAD RA LIST BILL. các này a nh? g?i function b?ng cách addlistener ý, cho d?
-function loadList() {
-    const billFromLocalStorage = localStorage.getItem('bill');
-    const billParseJson = JSON.parse(billFromLocalStorage);
-    //let bill = (Object.values(billParseJson));
-    // console.log(billParseJson);
-    let listProductHtml = "";
-    for (let i = 0; i < billParseJson.product.length; i++) {
-        listProductHtml += `<h5>${billParseJson.product[i].productName}</h5>`
-    }
-
+//ÐÂY LÀ FUNCTION LOAD RA LIST BILL. 
+function loadListBill() {
+    const billFormLocalStorage = localStorage.getItem('bill');
+    const billParseJson = JSON.parse(billFormLocalStorage);
     const listBill = document.getElementById('listBill');
-    for (let i = 0; i < billParseJson.length; i++) {
-        listBill.insertAdjacentHTML('beforeend', `
-        <h5> ${billParseJson[i].name}</h5>
-        <h5> ${billParseJson[i].phone}</h5>
-        <h5> ${billParseJson[i].add}</h5>
-        <h5> ${billParseJson[i].date}</h5>
-        <h5> ${listProductHtml}</h5>
-        <h5> ${convertVND(billParseJson[i].total.toString())}</h5>
-    `);
+    if (billParseJson != undefined) {
+        const bill = (Object.values(billParseJson));
+        for (let i = 0; i < bill.length; i++) {
+            listBill.insertAdjacentHTML('beforeend', `
+        <tr>
+            <td>${bill[i].name}</td> 
+            <td>${bill[i].phone}</td> 
+            <td>${bill[i].add}</td>     
+            <td>${bill[i].date}</td> 
+            <td>${convertVND(bill[i].total.toString())}đ</td>   
+        </tr>
+        `)
+        }
+    } else {
+        listBill.innerHTML = 'Danh Sácch Bill Trống!'
     }
 }
-//loadList();
+loadListBill();
+
+//function đoạn này để lấy ra danh sách brand.
 const filterBrand = document.getElementById('filterBrand');
 const listBrand = document.getElementById('listBrand');
-let brand = ['oppo', 'apple', 'samsung', 'xiaomi'];
 
-function filter() {
-    for (let i = 0; i < brand.length; i++) {
+
+function allBrand() {
+    const brand = [];
+    for (let i = 0; i < productData.length; i++) {
+        brand.push(productData[i].productBrand);
+    }
+    const uniqueBrand = Array.from(new Set(brand));
+    //filterUniqueBrand(brand);
+    loadListBrand(uniqueBrand)
+};
+allBrand()
+
+//function này hiển thị ra bảngng search sản phẩm theo brand 
+function loadListBrand(chosenListBrand) {
+    for (let i = 0; i < chosenListBrand.length; i++) {
         listBrand.insertAdjacentHTML('beforeend', `
-        <button><li class= "itemBrand"> ${brand[i]} </li></button>`)
+        <button><li class= "itemBrand"> ${chosenListBrand[i]} </li></button>`)
     };
     let itemBrand = document.getElementsByClassName('itemBrand');
     for (let i = 0; i < itemBrand.length; i++) {
         itemBrand[i].addEventListener('click', () => {
-            loadFilterBrand(brand[i])
+            loadFilterBrand(chosenListBrand[i])
+                // console.log(chosenListBrand[i]);
         })
     }
 };
-filter();
-const loadproduct = document.getElementById('loadProduct')
 
+// function này load ra danh sách sảnn phẩmm có brand được chọn
 function loadFilterBrand(chosenBrand) {
-    console.log(chosenBrand);
-    loadproduct.innerHTML = "";
-    for (let i = 0; i < productData.length; i++) {
-        if (productData[i].productBrand.toLowerCase() === chosenBrand.toLowerCase()) {
-            console.log('ok');
-            loadListProduct(productData[i]);
-            listProduct.style.display = 'none';
-        } else {
-            console.log('fail');
+    let dataFilterList = productData.filter((item) => {
+        if (item.productBrand.toLocaleLowerCase() === chosenBrand.toLowerCase()) {
+            return item;
         }
-    }
-};
+    })
+    loadListProduct(dataFilterList);
+}
+
 //search
 const searchKey = document.getElementById('searchKey');
 const listSearch = document.getElementById('listSearch');
@@ -682,36 +696,6 @@ function filterProduct(listData, keyValue) {
     })
     loadListProduct(dataSearchList);
 }
-
-//function này gender ra dc 1 sublist gợi ý tìm kiếm.
-// function showSearchList(listData, keyValue) {
-//     console.log(listData);
-//     if (keyValue.length > 0) {
-//         if (listData.length > 3) {
-//             for (let i = 0; i < 3; i++) {
-//                 listSearch.insertAdjacentHTML('beforeend', `
-//                 <li class="item">
-
-//                 </li>`);
-
-//             }
-//         } else
-//         if (listData.length > 0) {
-//             for (let i = 0; i < a; i++) {
-//                 listSearch.insertAdjacentHTML('beforeend', `
-//                 <li class="item">
-//                 <img src="" alt="">
-//                 <a onclick="loadDetailProduct(${listData[i]})"> ${listData[i].productName} </a>
-//                 </li>`);
-//             }
-//         }
-//     } else {
-//         listSearch.innerHTML = '';
-//     }
-
-//     contentUserForm.innerHTML = `<h2>Tìm th?y ${listData.length} k?t qu? cho "${keyValue}"</h2>`;
-//     loadListProduct(listData);
-// }
 
 //function này đổi đơn vị tiền tệ
 function convertVND(a) {
