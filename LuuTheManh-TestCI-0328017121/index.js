@@ -1,25 +1,46 @@
 // console.log("Problem Solving A.");
 // console.log("1.");
 // let n = prompt("Enter n number");
-// for (let i = 0; i <= n - 1; i++) {
-//     if (n % 2 == 0) {
-//         console.log("Không Có số đối diện với fist number")
-//     } else {
-//         console.log("Số đối diện với first number " + Math.floor(Number((n / 2) + 1)))
-//     }
+// let firstNum = prompt("Enter first number");
+// let num = 0;
+// let array = [0];
+// for(let i = 0; i < n-1; i++){
+//     num = num + Number(firstNum);
+//     array.push(num);
+// }
+// console.log(array)
+// if(n % 2 == 0 && n > 2){
+//     console.log("Số đối diện với firstNum là: " + array[array.length/2 + 1])
+// }else{
+//     console.log("Không có đối diện với firstNum");
 // }
 
 // console.log("2.");
 // let firstString = prompt("Enter first string:");
 // let secondString = prompt("Enter second string:");
 // console.log(firstString + " " + secondString);
-// let stString = firstString.split("");
-// console.log(stString);
-// let ndString = secondString.split("");
-// console.log(ndString);
-// for (let i = 0; i < stString.length; i++) {
-//     console.log(stString[i]);
-//     console.log(ndString[i]);
+// let splitFirstString = firstString.split("");
+// console.log(splitFirstString);
+// let splitSecondString = secondString.split("");
+// console.log(splitSecondString);
+// let array = [];
+// let stringLength;
+// if(splitFirstString.length >= splitSecondString.length){
+//     stringLength = splitFirstString;
+// }else{
+//     stringLength = splitSecondString
 // }
+// for(let i = 0; i < stringLength.length; i++){
+//     if(splitFirstString.length <= i){
+//         array.push(splitSecondString[i]);
+//     }else if(splitSecondString.length <= i){
+//         array.push(splitFirstString[i]);
+//     }else{
+//         array.push(splitFirstString[i]);
+//         array.push(splitSecondString[i]);
+//     }
+// }
+// console.log(array.join(''));
 
-console.log("Code Challenge B. ");
+
+// console.log("Code Challenge B. ");
